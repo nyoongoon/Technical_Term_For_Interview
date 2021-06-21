@@ -8,4 +8,4 @@
 ## CGI(Common Gateway Interface)
 웹서버와 프로그램 사이의 데이터를 주고 받는 규칙.
 ## Servlet(서블릿)
-서버와 프로그램이 데이터를 주고 받을 수 있도록 HTTP를 따르는 자바로 작성된 프로그램. CGI(Common Gateway Interface) 프로그램 중 자바로 작성된 프로그램이다. 
+서버와 프로그램이 데이터를 주고 받을 수 있도록 HTTP를 따르는 자바로 작성된 프로그램. <br>CGI(Common Gateway Interface) 프로그램 중 자바로 작성된 프로그램이다. 
