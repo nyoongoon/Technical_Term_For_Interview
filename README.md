@@ -23,6 +23,16 @@
           URL에 데이터를 포함하고 있어 데이터 조회에 적합
           바이너리 및 대용량 데이터 전송 불가
   
+## HttpServlet
+  - HttpServlet(abstrac class) --> GenericServlet(abstrac class) --> Servlet(Interface)
+          
+          - doGet(HttpServletRequest response, HttpServletResponse response), doPost(HttpServletRequest request, HttpServletResponse response)
+          - HttpServletRequest 
+            주요 메소드 : setCharacterEncoding("UTF-8"), getParameter(String name) ...
+
+          - HttpServletResponse
+            주요 메소드 : setContentType("text/html;charset=UTF-8"), getWriter() ...
+  
 ## JDBC(Java Database Connectivity)
   - 자바에서 데이터베이스에 접속할 수 있게 도와주는 자바 API. == 데이터베이스에 접속할 수 있게 해주는 인터페이스.
   - 이 인터페이스를 통해서 자바 어플리케이션과 DBMS의 통신을 가능하게 해준다. 
