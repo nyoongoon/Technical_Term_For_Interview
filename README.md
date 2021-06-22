@@ -8,7 +8,7 @@
 ## CGI(Common Gateway Interface)
 - 웹서버와 프로그램 사이의 데이터를 주고 받는 규칙.
 
-## DDFile(Depolyment Desciptor)
+## DD(Depolyment Desciptor)
 - 웹 애플리케이션의 배치 정보를 담고 있는 파일.
 - 서블릿에서는 web.xml이 DD파일이다. 
 - web.xml의 <welcome-file-list>태그를 이용하여 웰컴 파일을 설정할 수 있다. 
