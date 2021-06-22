@@ -23,6 +23,20 @@
           URL에 데이터를 포함하고 있어 데이터 조회에 적합
           바이너리 및 대용량 데이터 전송 불가
   
+## JDBC(Java Database Connectivity)
+  - 자바에서 데이터베이스에 접속할 수 있게 도와주는 자바 API. == 데이터베이스에 접속할 수 있게 해주는 인터페이스.
+  - 이 인터페이스를 통해서 자바 어플리케이션과 DBMS의 통신을 가능하게 해준다. -->  <Java app> ~ <JDBC(Interface)> ~ (DBMS protocol) ~ <DBMS>
+  - WEB-INF/lib/mysql-connector-java-version.bin.jar) <-에 포함된 com.mysql.jdbc.Driver 클래스를
+    자바 정적 클래스 DriverManager의 registerDriver()를 이용하여 구현하거나 정적 클래스 Class의 forName()을 이용하여 구현.
+                                                          
+  
+## POST Request(HTTP Request Method)
+  -  <form>태그의 method 속성값이 post인 경우<br>
+  
+          URL에 데이터가 포함X
+          메시지 본문에 데이터를 포함 -> 실행 결과 공유X
+          바이너리 및 대용량 데이터 전송 가능
+  
 ## Servlet(서블릿)
 - 서버와 프로그램이 데이터를 주고 받을 수 있도록 HTTP를 따르는 자바로 작성된 프로그램. <br>CGI(Common Gateway Interface) 프로그램 중 자바로 작성된 프로그램이다. 
 
@@ -30,10 +44,3 @@
 - 서브릿을 대신하여 CGI(Common Gateway Interface)규칙에 따라 웹 서버와 데이터를 주고 받는 프로그램. <br> 덕분에 서블릿을 개발할 때 CGI규칙을 신경 쓸 필요가 없어졌다. 
 - 서블릿 컨테이너는 클라이언트로 요청을 받으면 해당 서블릿을 찾아본다. 만약 없다면 해당 서블릿의 인스턴스를 생성한다. <br>한 번 서블릿 객체가 생성되면 웹 애플리케이션이 종료될 때까지 유지한다.
 - 대표적인 프로그램으로 "톰캣"이 있다.
-
-## POST Request(HTTP Request Method)
-  -  <form>태그의 method 속성값이 post인 경우<br>
-  
-          URL에 데이터가 포함X
-          메시지 본문에 데이터를 포함 -> 실행 결과 공유X
-          바이너리 및 대용량 데이터 전송 가능
