@@ -25,6 +25,11 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
     <param-value>매개변수 값</param-value>
 </comtext-param>
 ```
+- 서블릿 코드에서 초기화 매개변수 꺼내기
+```java
+ServletContect sc = this.getServletContext();
+sc.getInitParameter("args");
+```
 ## DD(Depolyment Desciptor)
 - 웹 애플리케이션의 배치 정보를 담고 있는 파일.
 - 서블릿에서는 web.xml이 DD파일이다. 
