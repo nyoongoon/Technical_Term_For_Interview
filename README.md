@@ -102,7 +102,9 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
      <param-name>매개변수 이름</param-name>
      <param-value>매개변수 값</param-value>
  </init-param>
+ 
   - 서블릿 코드에서 초기화 매개변수 꺼내기 ->
+ 
  ```java
  this.getInitParameter("매개변수 이름"); //반환하는 값은 문자열임.
  ```
