@@ -37,6 +37,9 @@ sc.getInitParameter("args");
 - 웹 서버에게 요청할 때, 서블릿 이름을 생략하고 디렉터리 위치까지만 지정한다면, 웹서버는 해당 디렉터리에서 웰컴 파일을 찾아 보내준다.
 - 웰컴 파일을 설정해놓지 않으면 디렉터리 위치까지만 요청했을 경우, 404오류 페이지를 출력한다.
 
+## Filter(javax.servlet.Filter) 
+ 
+ 
 ## GET Request(HTTP Request Method)
   1. 웹 브라우저 주소창에 URL을 입력하는 경우
   2. 링크를 클릭하는 경우
