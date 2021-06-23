@@ -23,7 +23,8 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
 <comtext-param>
     <param-name>매개변수 이름</param-name>
     <param-value>매개변수 값</param-value>
-
+</comtext-param>
+```
 ## DD(Depolyment Desciptor)
 - 웹 애플리케이션의 배치 정보를 담고 있는 파일.
 - 서블릿에서는 web.xml이 DD파일이다. 
