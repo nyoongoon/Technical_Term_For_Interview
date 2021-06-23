@@ -67,6 +67,13 @@
   <meta http-equiv='Refresh' content='1; url=list'>
   ```
   
+## Redirect
+  - 즉시 다른 페이지로 이동.
+   ``` java
+  response.sendRedirect("URL");
+  ```
+  
+  
 ## Servlet(서블릿)
 - 서버와 프로그램이 데이터를 주고 받을 수 있도록 HTTP를 따르는 자바로 작성된 프로그램. <br>CGI(Common Gateway Interface) 프로그램 중 자바로 작성된 프로그램이다. 
 
