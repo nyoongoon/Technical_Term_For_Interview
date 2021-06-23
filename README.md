@@ -17,7 +17,12 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
        - forName(String className) 
          인자값으로 클래스 이름을 넘기면 해당 클래스를 찾아 로딩한다. 클래스 이름은 반드시 패키지 이름을 포함해야한다.
          로딩된 클래스는 자신의 static 블록을 실행시킨다.
-## Context Parameter(컨텍스트 초기화 매개변수)
+## Context Init Parameter(컨텍스트 초기화 매개변수)
+ - 같은 웹 애플리케이션에 소속된 서블릿들이 공유하는 매개변수.
+ ```html
+<comtext-param>
+    <param-name>매개변수 이름</param-name>
+    <param-value>매개변수 값</param-value>
 
 ## DD(Depolyment Desciptor)
 - 웹 애플리케이션의 배치 정보를 담고 있는 파일.
