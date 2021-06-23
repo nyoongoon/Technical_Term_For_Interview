@@ -17,6 +17,7 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
        - forName(String className) 
          인자값으로 클래스 이름을 넘기면 해당 클래스를 찾아 로딩한다. 클래스 이름은 반드시 패키지 이름을 포함해야한다.
          로딩된 클래스는 자신의 static 블록을 실행시킨다.
+## Context Parameter(컨텍스트 초기화 매개변수)
 
 ## DD(Depolyment Desciptor)
 - 웹 애플리케이션의 배치 정보를 담고 있는 파일.
@@ -95,7 +96,12 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
 ## Servlet Init Parameter(서블릿 초기화 매개변수)
   - 서블릿을 생성하고 초기화 할 때, 즉 서블릿 컨테이너가 'init()을 호출할 때 전달하는 데이터'.
   - 보통 데이터베이서 연결 정보, 시스템 환경 정보 같은 정적인 데이터를 서블릿에 전달할 때 사용.
-  - DD 파일의 서블릿 배치 정보에 설정하거나(\<init-param\>), 서블릿 소스코드에서 애노테이션을 사용하여 설정한다.
+  - DD 파일의 서블릿 배치 정보에 설정하거나, 서블릿 소스코드에서 애노테이션을 사용하여 설정한다.
+ ```html
+ <init-param>
+     <param-name>매개변수 이름</param-name>
+     <param-value>매개변수 값</param-value>
+ </init-param>
   - 서블릿 코드에서 초기화 매개변수 꺼내기 ->
  ```java
  this.getInitParameter("매개변수 이름"); //반환하는 값은 문자열임.
