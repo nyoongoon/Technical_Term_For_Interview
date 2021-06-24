@@ -116,7 +116,12 @@ sc.getInitParameter("args");
           2. JSP에 대응하는 서블릿이 없거나 JSP파일이 변경되었다면 JSP 엔진을 통해 JSP파일을 해석하여 서블릿 자바 소스를 생성.
           3. 서블리 자바 소스는 자바 컴파일러를 통해 서블릿 클래스 파일로 컴파일 됨. JSP파일을 바꿀 때마다 이 과정을 반복.
           4. 컴파일된 서블릿의 service()가 호출되면, 출력 메서드를 총해 서블릿이 생성한 HTML화면을 웹 브라우저로 보냄.
-
+          - HttpJsp(interface) -> JspPage(interface) -> Servlet(interface)
+            _jspService()         jspInit(), jspDestory()
+              ㄴ> 서블릿컨테이너가      ㄴ> 오버라이딩 주의(Init(),Destory()X)
+                  service()호출하면
+                  이 메소드가 호출됨
+ 
 ## MVC(model-view-controller)
  - 서비스와 제품의 주기가 짧아짐으로써 코드의 재사용성을 높이기 위해 고안된 아키텍쳐.
  - 모델 : 데이터를 다루는 일.
