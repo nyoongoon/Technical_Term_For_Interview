@@ -91,11 +91,18 @@ sc.getInitParameter("args");
   - HttpServlet(abstrac class) --> GenericServlet(abstrac class) --> Servlet(Interface)
           
           - doGet(HttpServletRequest response, HttpServletResponse response), doPost(HttpServletRequest request, HttpServletResponse response)
-          - HttpServletRequest 
-            주요 메소드 : setCharacterEncoding("UTF-8")->doPost메소드에서 쓰인다. doGet인 경우 server.xml에서 설정, getParameter(String name) ...
-
-          - HttpServletResponse
-            주요 메소드 : setContentType("text/html;charset=UTF-8"), getWriter() ...
+## HttpServletRequest 
+   - 주요 메소드 
+           ```java
+           setCharacterEncoding("UTF-8"){ //doPost메소드에서 쓰인다. doGet인 경우 server.xml에서 설정 }
+           getParameter(String name){}
+           RequestDispatcher getRequestDispatcher("URL"){// 다른 서블릿이나 JSP로 작업을 위임할때 사용. forward(제어권 돌아오지않음)하거나 include(제어권 돌아옴)한다
+           }
+           ```
+## HttpServletResponse
+   - 주요 메소드 
+           
+           setContentType("text/html;charset=UTF-8"), getWriter() ...
   
 ## JDBC(Java Database Connectivity)
   - 자바에서 데이터베이스에 접속할 수 있게 도와주는 자바 API. == 데이터베이스에 접속할 수 있게 해주는 인터페이스.
