@@ -123,6 +123,12 @@ sc.getInitParameter("args");
               ㄴ> 서블릿컨테이너가      ㄴ> 오버라이딩 주의(Init(),Destory()X)
                   service()호출하면
                   이 메소드가 호출됨
+ - _jspService()에 선언된 로컬 변수중에서 다음의 참조 변수는 반드시 이 이름으로 존재해야함. 
+          
+          - PageContext pageContext, HttpSession session, ServletContext application, ServletConfig config; JspWriter out, Object page
+ - 아래의 객체들은 이 메서드가 호출될 때 반드시 준비되는 객체들이기 떄문에, 이 객체들을 가르켜 JSP 내장객체(Implicit Object)라고 한다.
+          
+          - request, response, pageContext, session, application, config, out, page, exception
  
 ## MVC(model-view-controller)
  - 서비스와 제품의 주기가 짧아짐으로써 코드의 재사용성을 높이기 위해 고안된 아키텍쳐.
