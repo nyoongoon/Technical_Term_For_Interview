@@ -29,6 +29,7 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
  ```
 ## Context Init Parameter(컨텍스트 초기화 매개변수)
  - 같은 웹 애플리케이션에 소속된 서블릿들이 공유하는 매개변수.
+ - 1. DD파일에 설정하거나, 애노테이션으로 설정 가능
  ```html
 <comtext-param>
     <param-name>매개변수 이름</param-name>
