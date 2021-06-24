@@ -49,11 +49,11 @@ sc.getInitParameter("args");
  - 필터는 서블릿 실행 전후에 어떤 작업을 하고자 할 때 사용하는 기술. 암호 해제, 자원 준비, 로그 남김 같은 작업들을 필터를 통해 처리할 수 있음.
  - 주요 메소드
  ```java
- void doFilter(FilterConfig config)throws ServletException{
+ void init(FilterConfig config)throws ServletException{
   //필터 객체가 생성되고 나서 준비작업을 위해 한 번 호출됨.
   //FilterConfig 객체를 통하여 필터 초기화 매개변수의 값을 꺼낼 수 있음.
  }
- void doFilter() ServletRequest request, ServletResponse response, FilterChain nextFilter) throws IOException, ServletException{
+ void doFilter(ServletRequest request, ServletResponse response, FilterChain nextFilter) throws IOException, ServletException{
   //서블릿이 실행되기 전에 해야할 작업
   //다음 작업을 호출. 더이상 필터가 없다면 서블릿의 service()호출
   //서블릿을 실행한 후, 클라이언트에게 응답하기 전 해야할 작업.
