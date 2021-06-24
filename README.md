@@ -108,7 +108,21 @@ sc.getInitParameter("args");
           -> 연결이 성공하면, DB 접속 정보인 java.sql.Connection 인터페이스 구현체를 반환 받는다.
           -> Connection의 createStatement()등의 메소드를 호출하여 SQL문을 담아낼 java.sql.Statement 인터페이스 구현체를 반환시킬 수 있다.
           -> SQL문을 담아낸 다음, Statement의 executeQuery()를 통해 DB서버에 SQL문을 보낸 뒤, 서버의 질의결과를 java.sql.ResultSet 인터페이스 구현체로 반환받는다. 
-                                                          
+
+## JSP(JavaServerPage)                                                          
+ - 화면 생성을 쉽게 해주는 기술. 뷰 컴포넌트를 만들 때 사용한다. <br>
+ 
+          1. 개발자는 서버에 JSP 파일을 작성해 둔다. -> 클라이언트가 JSP를 실행해달라고 요청하면 서블릿 컨테이너는 JSP파일에 대응하는 자바 서블릿을 찾아서 실행한다.
+          2. JSP에 대응하는 서블릿이 없거나 JSP파일이 변경되었다면 JSP 엔진을 통해 JSP파일을 해석하여 서블릿 자바 소스를 생성.
+          3. 서블리 자바 소스는 자바 컴파일러를 통해 서블릿 클래스 파일로 컴파일 됨. JSP파일을 바꿀 때마다 이 과정을 반복.
+          4. 컴파일된 서블릿의 service()가 호출되면, 출력 메서드를 총해 서블릿이 생성한 HTML화면을 웹 브라우저로 보냄.
+
+## MVC(model-view-controller)
+ - 서비스와 제품의 주기가 짧아짐으로써 코드의 재사용성을 높이기 위해 고안된 아키텍쳐.
+ - 모델 : 데이터를 다루는 일.
+ - 뷰 : 화면을 만드는 일.
+ - 컨트롤러 : 클라이언트의 요청을 받아 모델 컴포넌트를 호출하거나, 전달하기 쉬운 방식으로 데이터를 가공함.
+            모델이 수행 작업을 가지고 뷰에게 전달. ;일종의 조정자.
   
 ## POST Request(HTTP Request Method)
   -  <form>태그의 method 속성값이 post인 경우<br>
