@@ -45,8 +45,20 @@ sc.getInitParameter("args");
 - 웹 서버에게 요청할 때, 서블릿 이름을 생략하고 디렉터리 위치까지만 지정한다면, 웹서버는 해당 디렉터리에서 웰컴 파일을 찾아 보내준다.
 - 웰컴 파일을 설정해놓지 않으면 디렉터리 위치까지만 요청했을 경우, 404오류 페이지를 출력한다.
 
-## Filter(javax.servlet.Filter) 
- 
+## Filter(javax.servlet.Filter_서블릿 필터) 
+ - 필터는 서블릿 실행 전후에 어떤 작업을 하고자 할 때 사용하는 기술. 암호 해제, 자원 준비, 로그 남김 같은 작업들을 필터를 통해 처리할 수 있음.
+ - 주요 메소드
+ ```java
+ void doFilter(FilterConfig config)throws ServletException{
+  //필터 객체가 생성되고 나서 준비작업을 위해 한 번 호출됨.
+  //FilterConfig 객체를 통하여 필터 초기화 매개변수의 값을 꺼낼 수 있음.
+ }
+ void doFilter() ServletRequest request, ServletResponse response, FilterChain nextFilter) throws IOException, ServletException{
+  //서블릿이 실행되기 전에 해야할 작업
+  //다음 작업을 호출. 더이상 필터가 없다면 서블릿의 service()호출
+  //서블릿을 실행한 후, 클라이언트에게 응답하기 전 해야할 작업.
+ }
+ ```
  
 ## GET Request(HTTP Request Method)
   1. 웹 브라우저 주소창에 URL을 입력하는 경우
