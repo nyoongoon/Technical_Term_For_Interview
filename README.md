@@ -58,11 +58,11 @@ sc.getInitParameter("args");
           <param-name>이름</param-name>
           <param-value>값</param-value>
      </init-param>
- </filter.
+ </filter>
  <filter-mapping>
      <filter-name>이름</filter-name>
      <url-pattern>주소</url-pattern>
- </filter-mappiong>
+ </filter-mapping>
  ```
  - 주요 메소드
  ```java
