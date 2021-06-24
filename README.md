@@ -49,6 +49,21 @@ sc.getInitParameter("args");
 
 ## Filter(javax.servlet.Filter_서블릿 필터) 
  - 필터는 서블릿 실행 전후에 어떤 작업을 하고자 할 때 사용하는 기술. 암호 해제, 자원 준비, 로그 남김 같은 작업들을 필터를 통해 처리할 수 있음.
+ - 필터의 배치 방법 : 1.DD파일에 배치 정보 설정. 2. 애노테이션으로 기술하여 설정.
+ ```html
+ <filter>
+     <filter-name>필터 이름</filter-name>
+     <filter-class>필터 위치</filter-class>
+     <init-param>
+          <param-name>이름</param-name>
+          <param-value>값</param-value>
+     </init-param>
+ </filter.
+ <filter-mapping>
+     <filter-name>이름</filter-name>
+     <url-pattern>주소</url-pattern>
+ </filter-mappiong>
+ ```
  - 주요 메소드
  ```java
  void init(FilterConfig config)throws ServletException{
