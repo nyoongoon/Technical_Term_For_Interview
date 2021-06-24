@@ -61,7 +61,7 @@ sc.getInitParameter("args");
  </filter>
  <filter-mapping>
      <filter-name>이름</filter-name>
-     <url-pattern>주소</url-pattern>
+     <url-pattern>필터가 적용되어야하는 URL(/*는 모든 요청에 대해 이 필터를 적용하라는 뜻)</url-pattern>
  </filter-mapping>
  ```
  - 주요 메소드
