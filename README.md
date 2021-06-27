@@ -97,10 +97,12 @@ sc.getInitParameter("args");
 ``` java
 setCharacterEncoding("UTF-8"){ //doPost메소드에서 쓰인다. doGet인 경우 server.xml에서 설정 }
 getParameter(String name){}
-RequestDispatcher getRequestDispatcher("URL"){
- // RequestDispatcher 객체 생성
- // 다른 서블릿이나 JSP로 작업을 위임할때 사용. forward(제어권 돌아오지않음)하거나 include(제어권 돌아옴)한다
-}
+// RequestDispatcher 객체 생성
+// 다른 서블릿이나 JSP로 작업을 위임할때 사용. forward(제어권 돌아오지않음)하거나 include(제어권 돌아옴)한다
+ RequestDispatcher rd = request.getRequestDispatcher("URL");
+ rd.include(request, response);
+ //혹은 jsp태그를 활용
+ <jsp:include page="URL">
 void setAttribute(String name, Object o){
  // 주로 forward()나 include()안에 담긴 객체를 공유하기 할 때, setAttibute를 사용하여 공유할 객체에 값을 보관할 수 있다.
  }
