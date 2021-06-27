@@ -162,6 +162,17 @@ void setAttribute(String name, Object o){
            JSP페이지 내에서 사용되는 변수 또는 리턴값이 있는 메소드 결과값을 출력하기 위해 사용. 
            결과값은 String 타입이며, 세미콜론 사용불가
  
+## JSP Implicit Object(JSP 내장 객체를 데이터 보관소로 활용하기)
+- 데이터 보관소 역할 : 서블릿은 데이터를 공유하기 위해 네가지 종류의 JSP 내장 객체를 활용하여 데이터 보관소로 사용한다.
+- 공유 범위 순서 : application(ServletContext) > session(HttpSession) > request(ServletRequest) > pageContext(JspContext)             
+          
+            1. ServletContext 내장 객체 : 웹 애플리케이션이 시작될 때 생성되어 웹 애플리케이션이 종료될 때까지 유지. ->  참조변수 : application
+            2. HttpServlet : 클라이언트의 최초 요청시 생성되어 브라우저를 닫을 때까지 -> :session
+            3. ServletRequest : 클라이언트의 요청이 들어올 때 생성되어 클라이언트에게 응답을 보낼 때까지. -> : request
+            4. JspContext : JSP페이지를 실행하는 동안 -> : pageContext
+            : 참조변수.setAttribute(키, 값);
+            : 참조변수.getAttribute(키);
+            
 ## MVC(model-view-controller)
  - 서비스와 제품의 주기가 짧아짐으로써 코드의 재사용성을 높이기 위해 고안된 아키텍쳐.
  - 모델 : 데이터를 다루는 일.
