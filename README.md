@@ -144,6 +144,20 @@ void setAttribute(String name, Object o){
  - 아래의 객체들은 이 메서드가 호출될 때 반드시 준비되는 객체들이기 떄문에, 이 객체들을 가르켜 JSP 내장객체(Implicit Object)라고 한다.
           
           - request, response, pageContext, session, application, config, out, page, exception
+ - JSP 전용 태그 : 스크립트릿, 선언문, 표현식
+           스크립틀릿(Scriptlet) 
+           <% %>
+           JSP페이지에서 JAVA언어를 사용하기 위한 요소 중 가장 많이 사용되는 요소.
+
+           선언(Declaration) 
+           <%! %>
+           JSP페이지 내에서 사용되는 변수 또는 메소드를 선언할 때 사용되며, 선언된 변수 및 메소드는 전역의 의미로 사용. 
+           스크립틀릿과의 차이점은 스크립틀릿에서 변수를 선언하면 지역변수로 선언됨. 
+
+           표현식(Expression) 
+           <%= %>
+           JSP페이지 내에서 사용되는 변수 또는 리턴값이 있는 메소드 결과값을 출력하기 위해 사용. 
+           결과값은 String 타입이며, 세미콜론 사용불가
  
 ## MVC(model-view-controller)
  - 서비스와 제품의 주기가 짧아짐으로써 코드의 재사용성을 높이기 위해 고안된 아키텍쳐.
