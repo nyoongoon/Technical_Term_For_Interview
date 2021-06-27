@@ -145,6 +145,7 @@ void setAttribute(String name, Object o){
           
           - request, response, pageContext, session, application, config, out, page, exception
  - JSP 전용 태그 : 스크립트릿, 선언문, 표현식
+          
            스크립틀릿(Scriptlet) 
            <% %>
            JSP페이지에서 JAVA언어를 사용하기 위한 요소 중 가장 많이 사용되는 요소.
