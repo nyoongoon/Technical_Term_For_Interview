@@ -192,6 +192,8 @@ void setAttribute(String name, Object o){
             3. ServletRequest : 클라이언트의 요청이 들어올 때 생성되어 클라이언트에게 응답을 보낼 때까지. (포워딩이나 인클루딩을 통해 협업하는 Servlet끼리 데이터 공유 가능)-> : request
             
             4. JspContext : JSP페이지를 실행하는 동안 -> : pageContext
+            - JspContext 와 JSP 로컬변수와 차이점 : JspContext 태그 핸들러에게 데이터를 접근하고자 할 때 사용. (태그 핸들러가 로컬변수에는 접근 못함)
+            - cf) <jsp:include>같은 액션 태그의 값을 다루는 객체를 '태그 핸들러'라고 한다. -> (커스텀태그를 잘 사용하지 않기 때문에 JspContext도 잘 사용하지 않는다.)
             
             : 참조변수.setAttribute(키, 값);
             : 참조변수.getAttribute(키);
