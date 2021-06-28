@@ -183,13 +183,16 @@ void setAttribute(String name, Object o){
 - 공유 범위 순서 : application(ServletContext) > session(HttpSession) > request(ServletRequest) > pageContext(JspContext)             
           
             1. ServletContext 내장 객체 : 웹 애플리케이션이 시작될 때 생성되어 웹 애플리케이션이 종료될 때까지 유지. ->  참조변수 : application
+            
             2. HttpServlet : 클라이언트의 최초 요청시 생성되어 브라우저를 닫을 때까지 (클라이언트 당 한 개 생성)-> :session
-            ``` java
             - 주요 메소드
             session.invalidate(); // 세션 객체를 제거.
-            ```
+            
+            
             3. ServletRequest : 클라이언트의 요청이 들어올 때 생성되어 클라이언트에게 응답을 보낼 때까지. -> : request
+            
             4. JspContext : JSP페이지를 실행하는 동안 -> : pageContext
+            
             : 참조변수.setAttribute(키, 값);
             : 참조변수.getAttribute(키);
             
