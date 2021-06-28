@@ -111,7 +111,11 @@ getParameter(String name){}
  <jsp:include page="URL">
 void setAttribute(String name, Object o){
  // 주로 forward()나 include()안에 담긴 객체를 공유하기 할 때, setAttibute를 사용하여 공유할 객체에 값을 보관할 수 있다.
- }
+ } 
+ // 세션 내장객체를 가져올 수 있다
+ HttpSession session = request.getSession();
+ 
+ 
  
 ```
  
