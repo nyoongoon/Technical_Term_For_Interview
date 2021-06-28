@@ -189,7 +189,7 @@ void setAttribute(String name, Object o){
             session.invalidate(); // 세션 객체를 제거.
             
             
-            3. ServletRequest : 클라이언트의 요청이 들어올 때 생성되어 클라이언트에게 응답을 보낼 때까지. -> : request
+            3. ServletRequest : 클라이언트의 요청이 들어올 때 생성되어 클라이언트에게 응답을 보낼 때까지. (포워딩이나 인클루딩을 통해 협업하는 Servlet끼리 데이터 공유 가능)-> : request
             
             4. JspContext : JSP페이지를 실행하는 동안 -> : pageContext
             
