@@ -53,7 +53,20 @@ sc.getInitParameter("args");
  <load-on-startup>숫자(생성순서)</load-on-startup>
  ```
  
-
+## EL(Expression Language)
+ - 콤마와 대괄호를 사룔하여 자바 빈(인스턴스)의 프로퍼티나, 맵, 리스트, 배열의 값을 쉽게 꺼낼 수 있게 해주는 기술. static으로 선언된 메소드를 호출할 수도 있다.
+ - JSP에선 주로 보관소(내장 객체)에 들어있는 값을 꺼낼 때 사용함. cf)\<jsp:useBean\>과 다른 점은 EL로는 객체 생성 불가하다는 점.
+ - ${}은 즉시 적용(immediate evaluate) : JSP가 실행될 때 페이지에 즉시 반영됨.
+ - #{}은 지연 적용(deferred evaluation) : 시스템이 필요하다고 판단될 때 사용. --> JSF에서 UI만들 때 주로 사용하기 때문에 자주 사용 X
+ ``` java
+ ${member.no} //또는
+ ${member["no"]}
+ // 위를 자바 코드로 나타낸다면
+ Member obj = (Member)pageContext.findAttribute("member");
+ int value = obj.getNo(); //내장객체 PageContext의 findAttribute()는 작은 순서에 따라 보관소를 뒤져서 객체를 찾는다. 마지막까지 없다면 null반환.
+ ${requestScopte.member.no} //ServletRequest 보관소에서 값 꺼내기.
+ ```
+ 
 ## Filter(javax.servlet.Filter_서블릿 필터) 
  - 필터는 서블릿 실행 전후에 어떤 작업을 하고자 할 때 사용하는 기술. 암호 해제, 자원 준비, 로그 남김 같은 작업들을 필터를 통해 처리할 수 있음.
  - 필터의 배치 방법 : 1.DD파일에 배치 정보 설정. 2. 애노테이션으로 기술하여 설정.
