@@ -156,8 +156,14 @@ void setAttribute(String name, Object o){
  - 아래의 객체들은 이 메서드가 호출될 때 반드시 준비되는 객체들이기 떄문에, 이 객체들을 가르켜 JSP 내장객체(Implicit Object)라고 한다.
           
           - request, response, pageContext, session, application, config, out, page, exception
- - JSP 전용 태그 : 스크립트릿, 선언문, 표현식
+ - JSP 전용 태그 : 지시자, 스크립트릿, 선언문, 표현식
           
+           지시자
+           %@ ... %>는 지시자로 웹 컨테이너가 JSP 페이지를 Servlet 클래스로 변환할 때, 필요한 여러 가지 정보들을 기술하기 위해 사용 됨.
+            page 지시자 : <%@page 속성 목록 %>
+            include 지시자 : <%@include 속성 목록 %>
+            taglib 지시자 : <%@taglib 속성 목록 %>
+  
            스크립틀릿(Scriptlet) 
            <% %>
            JSP페이지에서 JAVA언어를 사용하기 위한 요소 중 가장 많이 사용되는 요소.
