@@ -281,5 +281,9 @@ void setAttribute(String name, Object o){
  ```java
  this.getInitParameter("매개변수 이름"); //반환하는 값은 문자열임.
  ```
-
-  
+## ServletContextListener
+- 서블릿 컨테이너(톰캣)는 웹 어플리케이션(Servlet/JSP)의 상태를 모니터링 할 수 있도록 시작에서 종료까지 주요한 사건에 대해 알림 기능을 제공.
+- 사건(event)이 발생했을 때 알림을 받는 객체를 '리스너(Listener)'라고 하고, DD 파일에 등록하여 사용한다. 
+            
+            서블릿 컨테이너 -(감시)-> 웹 애플리케이션 -(사건)-> 서블릿 컨테이너 -(리스너의 메소드 호출)-> 리스너
+- DAO처럼 여러 서블릿이 사용하는 객체는 공유하는 것이 좋다. -> ServletContextListener에서 준비
