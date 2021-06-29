@@ -41,6 +41,14 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
 ServletContect sc = this.getServletContext();
 sc.getInitParameter("args");
 ```
+
+## DAO(Data Access Object)
+- 데이터베이스와 연동하여 데이터를 처리하는 모델 컴포넌트.
+- 웹 브라우저 - 서블릿(컨트롤러) - DAO(모델) - DBMS
+                  |       \     |
+                JSP(뷰)   -  값 객체(VO)
+ 
+
 ## DD(Depolyment Desciptor)
 - 웹 애플리케이션의 배치 정보를 담고 있는 파일.
 - 서블릿에서는 web.xml이 DD파일이다. 
