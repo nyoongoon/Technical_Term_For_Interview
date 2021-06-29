@@ -64,10 +64,8 @@ sc.getInitParameter("args");
 - 싱글 커넥션을 사용하면 하나의 DAO가 롤백 기능을 호출할 경우, Statement엔 롤백 기능이 없기 때문에, 그 커넥션을 통해 이뤄지는 다른 모든 작업도 롤백이 됨.
 - DB커넥션 풀을 사용하면, 각 요청에 대해 별도의 커넥션 객체를 사용하기 때문에 다른 작업에 영향을 주지 않는다.
 - 또한, DB커넥션 객체는 버리지 않고 풀에 보관해두었다가 재사용하기 때문에, 가비지가 생성되지 않고 속도도 빨라진다. 
-- Java DB커넥션 풀 코드
-```
-https://blog.naver.com/nyoongoon/222414537038
-```
+- Java DB커넥션 풀 만들기 코드
+  https://blog.naver.com/nyoongoon/222414537038
 
 ## DD(Depolyment Desciptor)
 - 웹 애플리케이션의 배치 정보를 담고 있는 파일.
