@@ -286,4 +286,4 @@ void setAttribute(String name, Object o){
 - 사건(event)이 발생했을 때 알림을 받는 객체를 '리스너(Listener)'라고 하고, DD 파일에 등록하여 사용한다. 
             
             서블릿 컨테이너 -(감시)-> 웹 애플리케이션 -(사건)-> 서블릿 컨테이너 -(리스너의 메소드 호출)-> 리스너
-- DAO처럼 여러 서블릿이 사용하는 객체는 공유하는 것이 좋다. -> ServletContextListener에서 준비
+- DAO처럼 여러 서블릿이 사용하는 객체는 공유하는 것이 좋다. -> ServletContextListener  구현 하기
