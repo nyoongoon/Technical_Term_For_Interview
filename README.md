@@ -211,6 +211,9 @@ void setAttribute(String name, Object o){
             : 참조변수.setAttribute(키, 값);
             : 참조변수.getAttribute(키);
             
+## JSTL(JSP Standard Tag Library) 
+- JSP 태그의 확장 라이브러리
+            
 ## MVC(model-view-controller)
  - 서비스와 제품의 주기가 짧아짐으로써 코드의 재사용성을 높이기 위해 고안된 아키텍쳐.
  - 모델 : 데이터를 다루는 일.
