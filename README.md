@@ -53,7 +53,7 @@ sc.getInitParameter("args");
 ## DB Connection Pool (DB 커넥션 풀)
 - DB커넥션 객체를 여러개 생성하여 풀(Pool)에 담아 놓고 필요할 때 꺼내 쓰는 방식.
 - cf) 자주 쓰는 객체를 미리 만들어두고, 필요할 때마다 빌리고 사용한 다음 반납하는 방식을 풀링(pooling)이라고 함.
-- 싱글 커넥션 사용의 문제점 :
+- *싱글 커넥션 사용의 문제점 :
         
                     Connection
                /         |        \
