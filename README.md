@@ -44,6 +44,7 @@ sc.getInitParameter("args");
 
 ## DAO(Data Access Object)
 - 데이터베이스와 연동하여 데이터를 처리하는 모델 컴포넌트.
+- 보통 하나의 DB테이블이나 DB뷰에 대응한다.
 
          웹 브라우저 - 서블릿(컨트롤러) - DAO(모델) - DBMS
                          |       \     |
