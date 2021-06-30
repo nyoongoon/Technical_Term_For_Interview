@@ -81,7 +81,10 @@ sc.getInitParameter("args");
      
         1. context.xml 편집.
         2. 프로젝트의 DD파일에 서버 자원 참조한다는 선언해준다.
-
+        3. InitialContext의 lookup()메소드를 이용하여 JNDI이름으로 등록되어 있는 서버 자원을 찾기. 
+        4. context.xml에 자동으로 close하라고 설정을 해두면, 자원을 따로 해제하는 코드를 넣지 않아도 된다.
+        
+         
  
 
 ## DB Connection Pool (DB 커넥션 풀)
