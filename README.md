@@ -50,6 +50,26 @@ sc.getInitParameter("args");
                          |       \     |
                        JSP(뷰)   -  값 객체(VO)
                        
+## DataSource
+- javax.sql 확장 패키지 
+         
+         javax.sql 패키지는 java.sql 패키지의 기능을 보조하기 위해 만든 확장 패키지로 제공하는 주요 기능은 다음과 같다.
+         1. DriverManager를 대체할 수 있는 DataSource 인터페이스 제공
+         2. Connection 밑 Statement 객체의 풀링
+         3. 분산 트랜잭션 처리
+         4. Rowsets의 지원
+
+**DataSource 의 장점**
+- 1. DataSource는 서버에서 관리하기 때문에 데이터베이스나 JDBC 드라이버가 변경되더라도 애플리케이션을 바꿀 필요가 없다.
+
+         ----------------                        ------------------              
+         | (DataSource)-|--> DBMS                | (   WebApp     )|        ->  DriverManager를 사용하는 경우 웹 애플리케이션에서 관리하기 때문에
+         |  =========== |                        | (              )|           데이터베이스의 주소가 바뀐다거나, JDBC드라이버가 변경될 경우 웹 애플리케이션의 코드도 변경해야함!
+         | (WebApp)     |                        | (DriverManager-)|--> DBMS
+         ---------------                         ------------------
+            톰캣 서버                                     톰캣 서버       
+- 2. DataSource는 자체적으로 커넥션 풀 기능을 구현하기 때문에 웹 애플리케이션에서 따로 작업할 것이 없음.  
+  
 ## DB Connection Pool (DB 커넥션 풀)
 - DB커넥션 객체를 여러개 생성하여 풀(Pool)에 담아 놓고 필요할 때 꺼내 쓰는 방식.
 - cf) 자주 쓰는 객체를 미리 만들어두고, 필요할 때마다 빌리고 사용한 다음 반납하는 방식을 풀링(pooling)이라고 함.
@@ -175,6 +195,8 @@ void setAttribute(String name, Object o){
           -> Connection의 createStatement()등의 메소드를 호출하여 SQL문을 담아낼 java.sql.Statement 인터페이스 구현체를 반환시킬 수 있다.
           -> SQL문을 담아낸 다음, Statement의 executeQuery()를 통해 DB서버에 SQL문을 보낸 뒤, 서버의 질의결과를 java.sql.ResultSet 인터페이스 구현체로 반환받는다. 
 
+## JNDI  
+  
 ## JSP(JavaServerPage)                                                          
  - 화면 생성을 쉽게 해주는 기술. 뷰 컴포넌트를 만들 때 사용한다. <br>
  
