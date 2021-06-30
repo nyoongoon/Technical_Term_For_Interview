@@ -69,6 +69,7 @@ sc.getInitParameter("args");
          ---------------                         ------------------
             톰캣 서버                                     톰캣 서버       
 - 2. DataSource는 자체적으로 커넥션 풀 기능을 구현하기 때문에 웹 애플리케이션에서 따로 작업할 것이 없음.  
+- BasicDataSource -> implements ->  DataSource
   
 ## DB Connection Pool (DB 커넥션 풀)
 - DB커넥션 객체를 여러개 생성하여 풀(Pool)에 담아 놓고 필요할 때 꺼내 쓰는 방식.
