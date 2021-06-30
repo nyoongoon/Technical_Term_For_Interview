@@ -70,6 +70,12 @@ sc.getInitParameter("args");
             톰캣 서버                                     톰캣 서버       
 - 2. DataSource는 자체적으로 커넥션 풀 기능을 구현하기 때문에 웹 애플리케이션에서 따로 작업할 것이 없음.  
 - BasicDataSource -> implements ->  DataSource
+- DataSource 가 만들어 주는 Connection 객체는 커넥션 대행 객체 안에 포장되어 있는 객체이다.
+        
+        DataSource는 DriverManager가 생성한 커넥션을 리턴하는 것이 아니라, 커넥션 대행 객체(Proxy Object)를 리턴한다.
+        아파치 DBCP 컴포넌트의 BasicDataSource를 사용할 경우, PoolableConnection 객체를 반환해준다. 
+        이 대행 객체 안에는 진짜 커넥션을 가리키는 참조변수 _conn과 커넥션 풀을 가리키는 _pool이 들어있다.
+        따라서 DataSource가 만들어준 커넥션 대행 객체에 대해 close()를 호출하면, 커넥션 대행 객체는 진짜 커넥션 객체를 커넥션 풀에 반납한다.
   
 ## DB Connection Pool (DB 커넥션 풀)
 - DB커넥션 객체를 여러개 생성하여 풀(Pool)에 담아 놓고 필요할 때 꺼내 쓰는 방식.
