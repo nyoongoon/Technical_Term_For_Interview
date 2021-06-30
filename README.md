@@ -76,7 +76,14 @@ sc.getInitParameter("args");
         아파치 DBCP 컴포넌트의 BasicDataSource를 사용할 경우, PoolableConnection 객체를 반환해준다. 
         이 대행 객체 안에는 진짜 커넥션을 가리키는 참조변수 _conn과 커넥션 풀을 가리키는 _pool이 들어있다.
         따라서 DataSource가 만들어준 커넥션 대행 객체에 대해 close()를 호출하면, 커넥션 대행 객체는 진짜 커넥션 객체를 커넥션 풀에 반납한다.
-  
+        
+- **톰캣 서버에 DataSource 설정하기** (서버에서 관리하는 DataSource사용)
+     
+        1. context.xml 편집.
+        2. 프로젝트의 DD파일에 서버 자원 참조한다는 선언해준다.
+
+ 
+
 ## DB Connection Pool (DB 커넥션 풀)
 - DB커넥션 객체를 여러개 생성하여 풀(Pool)에 담아 놓고 필요할 때 꺼내 쓰는 방식.
 - cf) 자주 쓰는 객체를 미리 만들어두고, 필요할 때마다 빌리고 사용한 다음 반납하는 방식을 풀링(pooling)이라고 함.
@@ -202,7 +209,18 @@ void setAttribute(String name, Object o){
           -> Connection의 createStatement()등의 메소드를 호출하여 SQL문을 담아낼 java.sql.Statement 인터페이스 구현체를 반환시킬 수 있다.
           -> SQL문을 담아낸 다음, Statement의 executeQuery()를 통해 DB서버에 SQL문을 보낸 뒤, 서버의 질의결과를 java.sql.ResultSet 인터페이스 구현체로 반환받는다. 
 
-## JNDI  
+## JNDI(Java Naming and Directory Interface)  
+  - 디렉터리 서비스에 접근하는데 필요한 API이며, 애플리케이션은 이 API를 이용하여 서버의 자원을 찾을 수 있다. 
+  - cf) *자원*은 데이터베이스 서버나 메시징 시스템 같이, 다른 시스템과의 연결을 제공하는 객체. 특히, JDBC자원을 데이터 소스라고 부른다.
+  - Java EE 애플리케이션 서버에서 자원을 찾을 때 기본 JNDI 이름
+           
+          java:comp/env               : 응용 프로그램 환경 항목
+          java:comp/env/jdbc          : JDBC 데이터 소스
+          java:comp/ejb               : EJB 컴포넌트
+          java:comp/UserTransaction   : UserTranscation 객체
+          java:comp/env/mail          : JavaMail 연결 객체
+          java:comp/env/url           : URL 정보
+          java:comp/env/jms           : JMS 연결 
   
 ## JSP(JavaServerPage)                                                          
  - 화면 생성을 쉽게 해주는 기술. 뷰 컴포넌트를 만들 때 사용한다. <br>
