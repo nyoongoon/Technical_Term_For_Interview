@@ -77,7 +77,7 @@ sc.getInitParameter("args");
         이 대행 객체 안에는 진짜 커넥션을 가리키는 참조변수 _conn과 커넥션 풀을 가리키는 _pool이 들어있다.
         따라서 DataSource가 만들어준 커넥션 대행 객체에 대해 close()를 호출하면, 커넥션 대행 객체는 진짜 커넥션 객체를 커넥션 풀에 반납한다.
         
-- **톰캣 서버에 DataSource 설정하기** (서버에서 관리하는 DataSource사용)
+**톰캣 서버에 DataSource 설정하기** (서버에서 관리하는 DataSource사용)
      
         1. context.xml 편집.
         2. 프로젝트의 DD파일에 서버 자원 참조한다는 선언해준다.
