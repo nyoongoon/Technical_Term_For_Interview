@@ -160,6 +160,27 @@ sc.getInitParameter("args");
   //서블릿을 실행한 후, 클라이언트에게 응답하기 전 해야할 작업.
  }
  ```
+## FrontController(프론트 컨트롤러)
+- 컨트롤러에서, 요청 데이터를 처리하는 코드나, 모델과 뷰를 제어하는 코드가 중복되는 경우를 줄이기 위해서 프론트 컨트롤러를 사용한다.
+- 프론트 컨트롤러 디자인 패턴에서는 **프론트 컨트롤러**와, **페이지 컨트롤러** 두 개의 컨트롤러를 사용한다. 
+- 프론트 컨트롤러에서는 VO 객체의 준비, 뷰 컴포넌트로의 위임, 오류 처리 등과 같은 공통 작업을 담당.
+- 페이지 컨트롤러는 이름 그대로 요청한 페이지만을 위한 작업을 수행한다. (DAO를 사용하여 데이터를 준비, ServletRequest 보관소에 데이터 저장, 프론트 컨트롤러에게 뷰 정보(JSP URL)를 반환.
+
+ ``` java
+ @WebServlet(*.do)
+ public class DispatcherSerlvet extends HttpServlet{
+     protected void service(~~){//get, post 뿐만 아니라 다앙햔 요청 방식에 대응.    
+         //프론트 컨트롤러의 역할
+         //1. 요청 URL에서 서블릿 경로 알아내기
+         String servletPath = request.getSetvletPath(); //URL에서 서블릿 경로만 추출하는 메소드.
+         //2. 페이지 컨트롤러로 위임
+         //3. 요청 매개변수로부터 VO 객체 준비
+         //4. JSP로 위임
+         //5. 오류처리
+         //6. 프론트 컨트롤러의 배치 : @WebServlet(*.do)를 사용하여. 클라이언트 요청 중에서 서블릿 경로 이름이 .do로 끝나는 경우 이곳에서 처리.
+      }
+ }
+ ```
  
 ## GET Request(HTTP Request Method)
   1. 웹 브라우저 주소창에 URL을 입력하는 경우
