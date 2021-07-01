@@ -183,6 +183,14 @@ sc.getInitParameter("args");
  ```
 - 페이지 컨트롤러를 일반 클래스로 전환하면 서블릿 기술에 종속되지 않아 재사용성이 높아진다.
 - 마찬가지로 이유로, 프런트 컨트롤러와 페이지 컨트롤러 사이에서 데이터를 주고 받을 때, Map객체를 사용하여 서블릿 기술의 종속을 줄인다. 
+
+``` java
+public interface Controller {
+	String execute(Map<String, Object> model) throws Exception;
+ //execute는 프론트 컨트롤러가 페이지 컨트롤러에게 일을 시키기 위해 호출하는 메서드.
+}
+``` 
+ 
  
 ## GET Request(HTTP Request Method)
   1. 웹 브라우저 주소창에 URL을 입력하는 경우
