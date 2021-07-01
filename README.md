@@ -187,7 +187,7 @@ sc.getInitParameter("args");
 ``` java
 public interface Controller {
 	String execute(Map<String, Object> model) throws Exception;
-	 //execute는 프론트 컨트롤러가 페이지 컨트롤러에게 일을 시키기 위해 호출하는 메서드.
+	 //execute는 프론트 컨트롤러가 페이지 컨트롤러에게 일을 시키기 위해 호출하는 메서드. 반환값은 화면 출력을 수행하는 JSP의 URL
 	 //페이지 컨트롤러는, 프론트 컨트롤러가 담아준 객체를 map으로 꺼내고, DAO에서 작업한 결과를 map에 담아 프론트 컨트롤러에 보낸다
 	 //map에 저장된 값은 프론트 컨트롤러가 꺼내서 ServletRequest 보관소에 저장시키고, JSP가 꺼내서 사용한다. 	
 }
