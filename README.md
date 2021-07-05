@@ -131,8 +131,8 @@ sc.getInitParameter("args");
 - 빈 컨테이너(Java Beans Container)는 객체가 실행 되기 전에 그 객체가 필요로 하는 의존 객체를 주입해 주는 역할을 함.	
 - 좀 더 일반적인 말로 역제어(IoC; Inversion Of Control)이라 함.
 		
-			           빈 컨테이너
-				      ↓ 1.주입
+			              빈 컨테이너
+				         ↓ 1.주입
 		Controller --2.사용-> DAO
 	
 ## EL(Expression Language)
