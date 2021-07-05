@@ -130,6 +130,10 @@ sc.getInitParameter("args");
 - **해결책 : 의존 객체를 외부에서 주입 (Dependency Injection)**
 - 빈 컨테이너(Java Beans Container)는 객체가 실행 되기 전에 그 객체가 필요로 하는 의존 객체를 주입해 주는 역할을 함.	
 - 좀 더 일반적인 말로 역제어(IoC; Inversion Of Control)이라 함.
+		
+			           빈 컨테이너
+				      ↓ 1.주입
+		Controller --2.사용-> DAO
 	
 ## EL(Expression Language)
  - 콤마와 대괄호를 사룔하여 자바 빈(인스턴스)의 프로퍼티나, 맵, 리스트, 배열의 값을 쉽게 꺼낼 수 있게 해주는 기술. static으로 선언된 메소드를 호출할 수도 있다.
