@@ -375,8 +375,19 @@ void setAttribute(String name, Object o){
    ``` java
   response.sendRedirect("URL");
   ```
-  
-  
+  	   
+## Reflection API
+ - 클래스나 메서드의 내부구조를 들여다 볼 때 사용하는 도구라는 뜻의 API. 
+ - 주요 API
+		   
+		   Class.newInstance() : 주어진 클래스의 인스턴스를 생성
+		   Class.getName() : 클래스의 이름을 반환
+		   Class.getMethods() : 클래스에 선언된 모든 public 메서드의 목록을 배열로 반환
+		   Method.invoke() : 해당 메서드를 호출
+		   Method.getParameterTypes() : 메서드의 매개변수 목록을 배열로 반환
+
+		   
+		   
 ## Servlet(서블릿)
 - 서버와 프로그램이 데이터를 주고 받을 수 있도록 HTTP를 따르는 자바로 작성된 프로그램. <br>CGI(Common Gateway Interface) 프로그램 중 자바로 작성된 프로그램이다. 
 
