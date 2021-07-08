@@ -377,8 +377,9 @@ void setAttribute(String name, Object o){
   ```
   	   
 ## Reflection API
- - 클래스나 메서드의 내부구조를 들여다 볼 때 사용하는 도구라는 뜻의 API. 
- - 주요 API
+- 클래스나 메서드의 내부구조를 들여다 볼 때 사용하는 도구라는 뜻의 API. 
+- 리플랙션 API를 활용하여 인스턴스 생성과 메소드 호출을 **자동화**할 수 있음.
+- 주요 API
 		   
 		   Class.newInstance() : 주어진 클래스의 인스턴스를 생성
 		   Class.getName() : 클래스의 이름을 반환
