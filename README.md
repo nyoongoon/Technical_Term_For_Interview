@@ -5,6 +5,17 @@
 
 <br>
 
+## Annotation(애노테이션)
+- 컴파일이나 배포, 실행할 때 참조할 수 있는 주석. 애노테이션을 사용하여 클래스나, 필드, 메서드에 대해 부가 정보를 등록할 수 있다. 
+
+- 애노테이션 유지 정책
+```java
+@Retention(RetentionPolicy.RUNTIME) // RetentionPolicy.SOURCE : 소스 파일에서만 유지. 컴파일할 때 제거됨. 클래스 파일에 애노테이션 정보 남아있지 않음.
+			            // RetentionPolicy.CLASS : 클래스 파일에 기록됨. 실행 시에는 유지되지 않음. 실행 중에는 애노테이션 값을 꺼낼 수 없음(기본정책)
+	 		            // RetentionPolicy.RUNTIME : 클래스 파일에 기록됨. 실행 시에도 유지됨. 즉, 실행 중에 클래스에 기록된 애노테이션 값 참조 가능
+```
+
+
 ## Buffer
 
 - Java에서 버퍼를 비워줘야 하는 경우
