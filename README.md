@@ -356,7 +356,7 @@ void setAttribute(String name, Object o){
           메시지 본문에 데이터를 포함 -> 실행 결과 공유X
           바이너리 및 대용량 데이터 전송 가능
 
-## Properties
+## Properties (java.util.Properties)
 - 이름=값 형태로 된 파일을 다룰 때 사용하는 클래스. 
 		   
 			 < Properties 객체 >
