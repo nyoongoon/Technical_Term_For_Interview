@@ -40,6 +40,8 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
  }
  
  isInstance(Object obj) : 주어진 객체가 해당 클래스 또는 인터페이스의 인스턴스인지 검사
+ 
+ clazz.getAnnotation(Component.class).value(); // 클래스로부터 애노테이션 추출. 애노테이션에 정의된 메서드를 호출하여 속성값을 꺼냄. @Component의 기본 속성값을 꺼내고 싶으면, value()호출.
  ```
 ## Context Init Parameter(컨텍스트 초기화 매개변수)
  - 같은 웹 애플리케이션에 소속된 서블릿들이 공유하는 매개변수.
@@ -418,7 +420,13 @@ props.keySet(); // Properties에 저장된 키 목록을 반환.
 		   Method.invoke() : 해당 메서드를 호출
 		   Method.getParameterTypes() : 메서드의 매개변수 목록을 배열로 반환
 
-		   
+## Reflections Library
+- 오픈소스 라이브러리로 자바에서 제공하는 reflection api 보다 쉽게 클래스를 찾거나 클래스의 정보를 추출할 수 있다.
+```java
+Refelctions reflector = new Reflections(""); // 매개변수 값은 클래스를 찾을 때 출발하는 패키지. 빈문자열은 classpath에 있는 모든 패키지 검색
+Set<Class<?>> reflector.getTypeAnnotatedWith(Component.class); // 애노테이션이 붙은 클래스를 찾을 수 있다. ex)@Component가 붙은 클래스를 찾고 싶으면 앞의 코드처럼 애노테이션 클래스를 지정.
+						     
+```						     
 		   
 ## Servlet(서블릿)
 - 서버와 프로그램이 데이터를 주고 받을 수 있도록 HTTP를 따르는 자바로 작성된 프로그램. <br>CGI(Common Gateway Interface) 프로그램 중 자바로 작성된 프로그램이다. 
