@@ -26,6 +26,8 @@ public final class Class<T> extends Object implements Serializable, GenericDecla
  //인자값으로 클래스 이름을 넘기면 해당 클래스를 찾아 로딩한다. 클래스 이름은 반드시 패키지 이름을 포함해야한다.
  //로딩된 클래스는 자신의 static 블록을 실행시킨다.
  }
+ 
+ isInstance(Object obj) : 주어진 객체가 해당 클래스 또는 인터페이스의 인스턴스인지 검사
  ```
 ## Context Init Parameter(컨텍스트 초기화 매개변수)
  - 같은 웹 애플리케이션에 소속된 서블릿들이 공유하는 매개변수.
