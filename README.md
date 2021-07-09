@@ -355,7 +355,24 @@ void setAttribute(String name, Object o){
           URL에 데이터가 포함X
           메시지 본문에 데이터를 포함 -> 실행 결과 공유X
           바이너리 및 대용량 데이터 전송 가능
-  
+
+## Properties
+- 이름=값 형태로 된 파일을 다룰 때 사용하는 클래스. 
+		   
+			 < Properties 객체 >
+	        ex).      키      ||      값
+		jndi.dataSource  ||  java:comp/env/jdbc/db    
+
+- 주요 메소드
+```java
+Properties props = new Properties();
+props.load(new FileReader(propertiesPath)); //load()메소드는 FileReader를 통해 읽어들인 프로퍼티 내용을 키-값 형태로 내부 맵에 보관
+props.keySet(); // Properties에 저장된 키 목록을 반환.				 
+				 
+```
+				
+				 
+		   
 ## Refresh
   - 일정 시간이 지나고 자동으로 서버에 요청을 보내는 방법.
   - 응답 헤더를 이용하여 리프래시 정보를 보낼 수 있다.
