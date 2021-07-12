@@ -65,7 +65,29 @@ sc.getInitParameter("args");
          웹 브라우저 - 서블릿(컨트롤러) - DAO(모델) - DBMS
                          |       \     |
                        JSP(뷰)   -  값 객체(VO)
-                       
+
+## DataBinding(interface)
+- 입력한 값을 도메인 모델에 맞춰 자동으로 변환 후 할당해주는 **'동적 데이터 변환 인터페이스'**이다.
+- 프론트 컨트롤러가 페이지 컨트롤러를 실행하기 전에, 원하는 데이터가 무엇인지 묻기 때문에 이에 대한 호출 규칙을 정의해 놓아야한다.
+- 페이지 컨트롤러 중에서, **'클라이언트가 보낸 데이터가 필요한 경우'**. DataBinding(interface)를 구현한다. 
+
+``` java
+public interface DataBinding{
+    Object[] getDataBinders();
+}
+```
+
+- getDataBinders()의 반환값은 데이터의 이름과 타입의 정보를 담은 Object배열이다. 
+
+``` java
+public Object[] getDataBinders(){
+    return new Object[]{
+        "member", vo.Member.class // 이 페이지 컨트롤러에서 필요한 데이터 이름과, 타입의 정보를 명시해둔다.
+    }
+```
+- 프론트 컨트롤러 입장에서, 이 인터페이스를 구현해놓은 페이지 컨트롤러를 호출할 때만 VO객체를 준비하면 된다. 
+- getDataBinders()에서 지정한 대로, 프론트 컨트롤러가 VO객체를 무조건 생성할 것이기 때문에 **객체의 존재 유무로 분기문을 작성하면 안된다.**
+
 ## DataSource
 - javax.sql 확장 패키지 
          
