@@ -77,7 +77,7 @@ public interface DataBinding{
 }
 ```
 
-- getDataBinders()의 반환값은 데이터의 이름과 타입의 정보를 담은 Object배열이다. 
+- getDataBinders()의 반환값은 필요한 데이터의 이름과 타입의 정보를 담은 Object배열이다. 
 
 ``` java
 public Object[] getDataBinders(){
