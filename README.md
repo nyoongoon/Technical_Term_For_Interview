@@ -399,8 +399,8 @@ void setAttribute(String name, Object o){
 		   mybatis 설정 파일             : DB연결 정보, 트랜잭션 정보, mybatis제어정보 등의 설정 내용을 포함. SessionFactory를 만들 때 사용 됨.
 		   SQL 맵퍼 파일                 : SQL문을 담고 있는 파일. SqlSession 객체가 참조함.
 
-### SqlSessionFactory(의존객체) : SQL를 실행할 때 사용할 도구를 만들어 주는 객체
-### SqlSession : SQL을 실행하는 객체. 이 객체가 있어야만 SQL문을 실행할 수 있다. 이 객체는 직접 생성할 수 없고, SqlSessionFactory를 통해서만 얻을 수 있다.
+- SqlSessionFactory(의존객체) : SQL를 실행할 때 사용할 도구를 만들어 주는 객체
+- SqlSession : SQL을 실행하는 객체. 이 객체가 있어야만 SQL문을 실행할 수 있다. 이 객체는 직접 생성할 수 없고, SqlSessionFactory를 통해서만 얻을 수 있다.
 ```java
 SqlSession sqlSession = sqlSessionFactory.**openSession()**;
 	try {
