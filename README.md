@@ -420,7 +420,13 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 		   update()
 		   delete()
 - selectList(String sqlId) : 호출할 때 넘기는 매개변수 값은 SQL아이디. **SQL아이디**는 SQL맵퍼에서의 **네임스페이스 이름**과 **SQL문의 아이디**를 결합하여 만든 문자열.
-- selectList(String sqlId, Object parameter) --> sql문을 실행하는데 값이 필요하다면 두 번째 매개변수로 값을 담은 객체를 넘기면 됨 <br>		   
+- selectList(String sqlId, Object parameter) --> sql문을 실행하는데 값이 필요하다면 두 번째 매개변수로 값을 담은 객체를 넘기면 됨 
+- commit()과 rollback()메소드 : 운영 데이터베이스에 적용/취소.
+- 자동커밋 기능 : 편리하지만 트랜잭션을 다를 수 없음.		   
+```Java
+	SqlSession sqlSession = sqlSessionFactory.openSession(true)
+```		   
+<br>		   
 
 ### * SQL맵퍼
 - #{프로퍼티명} 자리에 객체의 프로퍼티 값이 놓인다. **객체의 프로퍼티란 겟터/셋터를 가리키는 용어** 프로퍼티 이름은 겟터/셋터 메서드의 이름에서 추출.
@@ -433,6 +439,7 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 		   프로퍼티 이름 : startDate
 - 객체가 아닌 기본 데이터 형으로 전달할 때 -> 자동 포장(Auto-boxing)되어 전달됨. 
 - Integer클래스 같은 랩퍼(wrapper) 클래스에서는 프로퍼티를 의미하는 겟터 메서드가 없기 때문에, 기본 타입의 객체(랩퍼(wrapper) 객체)로부터 값을 꺼낼 때는 아무 이름이나 사용할 수 있음.		   
+
 		   
 		   
 ## POST Request(HTTP Request Method)
