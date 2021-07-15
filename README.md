@@ -421,8 +421,8 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 		   delete()
 - selectList(String sqlId) : 호출할 때 넘기는 매개변수 값은 SQL아이디. **SQL아이디**는 SQL맵퍼에서의 **네임스페이스 이름**과 **SQL문의 아이디**를 결합하여 만든 문자열.
 - selectList(String sqlId, Object parameter) --> sql문을 실행하는데 값이 필요하다면 두 번째 매개변수로 값을 담은 객체를 넘기면 됨 <br>		   
-		   
-- SQL맵퍼
+
+### SQL맵퍼
 - #{프로퍼티명} 자리에 객체의 프로퍼티 값이 놓인다. **객체의 프로퍼티란 겟터/셋터를 가리키는 용어** 프로퍼티 이름은 겟터/셋터 메서드의 이름에서 추출.
 		   
 		   Date getStartDate(){...}
