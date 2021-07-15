@@ -387,6 +387,41 @@ void setAttribute(String name, Object o){
  - 컨트롤러 : 클라이언트의 요청을 받아 모델 컴포넌트를 호출하거나, 전달하기 쉬운 방식으로 데이터를 가공함. <br>
             모델이 수행 작업을 가지고 뷰에게 전달. ;일종의 조정자.
   
+## Mybatis
+- 퍼시스턴스 프레임워크 : 이전의 저장한 데이터를 다시 불러올 수 있는 기술(퍼시스턴스)을 가진 프레임워크.		   		  
+- Mybatis는 SQL문장으로 직접 DB를 다루는 SQL맵퍼.
+- Mybatis의 핵심은 개발과 유지보수가 쉽도록 소스 코드에 박혀있는 SQL을 별도의 파일로 분리, 캡슐화 하는 것.
+- Mybatis 프레임워크의 핵심 컴포넌트 
+		   
+		   SqlSession                  : 실제 SQL을 실행하는 객체. 이 객체는 SQL을 처리하기 위해 JDBC드라이버를 사용함.
+		   SqlSessionFactory           : SqlSession 객체를 생성함.
+		   SqlSessionFactoryBuilder    : mysql 설정 파일의 내용을 토대로 SqlSessionFactory를 생성함.
+		   mybatis 설정 파일             : DB연결 정보, 트랜잭션 정보, mybatis제어정보 등의 설정 내용을 포함. SessionFactory를 만들 때 사용 됨.
+		   SQL 맵퍼 파일                 : SQL문을 담고 있는 파일. SqlSession 객체가 참조함.
+
+### SqlSessionFactory(의존객체) : SQL를 실행할 때 사용할 도구를 만들어 주는 객체
+### SqlSession : SQL을 실행하는 객체. 이 객체가 있어야만 SQL문을 실행할 수 있다. 이 객체는 직접 생성할 수 없고, SqlSessionFactory를 통해서만 얻을 수 있다.
+```java
+SqlSession sqlSession = sqlSessionFactory.**openSession()**;
+	try {
+		return sqlSession.**selectList("dao.ProjectDao.selectList")**;
+		   			//dao.ProjectDao --> sql맵퍼의 네임스페이스 이름
+		   			//selectList --> sql문의 아이디				
+	}finally {
+		sqlSession.**close()**;
+	}		   
+```		   
+- 사용을 완료한 후, close()를 호출하여 SQL문을 실행할 때 사용한 자원을 해제 해야한다.
+- SqlSession의 주요 메소드
+		   
+		   selectList() 
+		   selectOne()
+		   insert()
+		   update()
+		   delete()
+- selectList(String sqlId) : 호출할 때 넘기는 매개변수 값은 SQL아이디. **SQL아이디**는 SQL맵퍼에서의 **네임스페이스 이름**과 **SQL문의 아이디**를 결합하여 만든 문자열.
+		   
+		   
 ## POST Request(HTTP Request Method)
   -  <form>태그의 method 속성값이 post인 경우<br>
   
