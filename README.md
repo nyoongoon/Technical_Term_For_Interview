@@ -402,13 +402,13 @@ void setAttribute(String name, Object o){
 - SqlSessionFactory(의존객체) : SQL를 실행할 때 사용할 도구를 만들어 주는 객체
 - SqlSession : SQL을 실행하는 객체. 이 객체가 있어야만 SQL문을 실행할 수 있다. 이 객체는 직접 생성할 수 없고, SqlSessionFactory를 통해서만 얻을 수 있다.
 ```java
-SqlSession sqlSession = sqlSessionFactory.**openSession()**;
+SqlSession sqlSession = sqlSessionFactory.openSession();
 	try {
-		return sqlSession.**selectList("dao.ProjectDao.selectList")**;
+		return sqlSession.selectList("dao.ProjectDao.selectList");
 		   			//dao.ProjectDao --> sql맵퍼의 네임스페이스 이름
 		   			//selectList --> sql문의 아이디				
 	}finally {
-		sqlSession.**close()**;
+		sqlSession.close();
 	}		   
 ```		   
 - 사용을 완료한 후, close()를 호출하여 SQL문을 실행할 때 사용한 자원을 해제 해야한다.
