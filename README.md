@@ -400,8 +400,25 @@ void setAttribute(String name, Object o){
 		   SQL 맵퍼 파일                 : SQL문을 담고 있는 파일. SqlSession 객체가 참조함.
 
 - SqlSessionFactory(의존객체) : SQL를 실행할 때 사용할 도구를 만들어 주는 객체
+
+		   			   build()              openSession()
+		   SqlSessionFactoryBuilder ----> SqlSessionFactory ----> SqlSession 
+		   		              |
+		   	            (설계도 투입)|
+		   			      |
+		   		  	   mybatis 설정파일 <-- SQL맵퍼파일
+							    
+- SqlSessionFactoryBuilder : 복잡한 객체는 전문가를 통해 생성하도록 설계 -> 이런 객체 생성 패턴을 빌더 패턴(Builder Pattern)이라고 함.					   	
+``` java		   
+String resource = "dao/mybatis-config.xml";
+InputStream inputStream = Resources.getResourceAsStream(resource);
+SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+// build의 매개변수 값으로 mybatis 설정 파일의 입력 스트림을 넘겨줘야 함.
+// 입력스트림을 얻기 위해서 mybatis에서 제공하는 Resources 클래스를 하용.
+// Resourcs의 getResourceAsStream()메서드를 사용하면 자바 클래스 경로에 있는 파일의 입력 스트림을 쉽게 얻을 수 있다.		   
+```		   
 - SqlSession : SQL을 실행하는 객체. 이 객체가 있어야만 SQL문을 실행할 수 있다. 이 객체는 직접 생성할 수 없고, SqlSessionFactory를 통해서만 얻을 수 있다.
-```java
+``` java
 SqlSession sqlSession = sqlSessionFactory.openSession();
 	try {
 		return sqlSession.selectList("dao.ProjectDao.selectList");
