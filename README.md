@@ -408,13 +408,13 @@ void setAttribute(String name, Object o){
 		   			      |
 		   		  	   mybatis 설정파일 <-- SQL맵퍼파일
 							    
-- SqlSessionFactoryBuilder : 복잡한 객체는 전문가를 통해 생성하도록 설계 -> 이런 객체 생성 패턴을 빌더 패턴(Builder Pattern)이라고 함.					   	
+- SqlSessionFactoryBuilder : 복잡한 객체는 전문가를 통해 생성하도록 설계 -> 이런 객체 생성 패턴을 **빌더 패턴(Builder Pattern)**이라고 함.					   	
 ``` java		   
 String resource = "dao/mybatis-config.xml";
 InputStream inputStream = Resources.getResourceAsStream(resource);
 SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
 // build의 매개변수 값으로 mybatis 설정 파일의 입력 스트림을 넘겨줘야 함.
-// 입력스트림을 얻기 위해서 mybatis에서 제공하는 Resources 클래스를 하용.
+// 입력스트림을 얻기 위해서 mybatis에서 제공하는 Resources 클래스를 용.
 // Resourcs의 getResourceAsStream()메서드를 사용하면 자바 클래스 경로에 있는 파일의 입력 스트림을 쉽게 얻을 수 있다.		   
 ```		   
 - SqlSession : SQL을 실행하는 객체. 이 객체가 있어야만 SQL문을 실행할 수 있다. 이 객체는 직접 생성할 수 없고, SqlSessionFactory를 통해서만 얻을 수 있다.
@@ -480,7 +480,9 @@ props.load(new FileReader(propertiesPath)); //load()메소드는 FileReader를 �
 props.keySet(); // Properties에 저장된 키 목록을 반환.				 
 				 
 ```
-				
+<br>
+---
+<br>				 
 				 
 		   
 ## Refresh
