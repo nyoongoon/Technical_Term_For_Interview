@@ -462,11 +462,11 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 - id 속성 : 각각의 sql문을 구문하기 위해 id 속성을 사용
 - resultType 속성 : select문을 실행하면 결과가 생성되는데, 이 결과를 담을 객체를 지정하는 속성이 resultType. resultType에는 클래스 이름이 온다. mybatis 설정파일에 그 클래스 이름에 대한 별명이 정의되어 있다면 resultType값으로 별명 사용 가능
 - 칼럼과 셋터 메서드 : mybatis는 select결과가 저장된 resultType의 인스턴스를 생성후, 각 칼럼에 대응하는 셋터메서드를 찾아서 호출한다. 이때 셋서 메서드는 대소문자 구분없이 set을 뺸 메서드의 이름과 칼럼 이름이 같으면 된다. 칼럼의 이름과 일치하는 셋터가 없다면 값이 저장되지 않는다. 칼럼의 이름과 셋터가 일치하지 않는다면, select문을 작성할 때 칼럼에 별명을 붙이면 된다. 
-### * <resultMap> 엘리먼트
-- 칼럼에 별명을 붙이는 대신 <resultMap>을 이용하면 칼럼 이름과 셋터 이름의 불일치 문제를 해결할 수 있음. <resultMap> 태그의 type값은 칼럼 데이터를 저장할 클래스 또는 클래스의 별명.
+### * \<resultMap\> 엘리먼트
+- 칼럼에 별명을 붙이는 대신 \<resultMap\>을 이용하면 칼럼 이름과 셋터 이름의 불일치 문제를 해결할 수 있음. \<resultMap\> 태그의 type값은 칼럼 데이터를 저장할 클래스 또는 클래스의 별명.
 		   
 ``` html
-<resultMap type="project" id="projectResultMap">
+<resultMap type="project" id="projectResultMap"\
 	<id column="pno" property="no"/> // <-- 칼럼이름과 셋터 메서드가 불일치할 경우 여기서 설정시켜줌!					      
 	<result column="PNAME" property="title"/>
 	<result column="CONTENT" property="content"/>
@@ -474,16 +474,17 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 ...
 </resultMap>									       
 ```		   
-### * <id> 엘리먼트
-- <id>태그에서 지정한 프로퍼티는 객체의 식별자로 사용됨. select를 통해 생성된 결과 객체들은 별도의 보관소에 저장(캐싱, caching)해두고, 다음 select를 실행할 때 재사용. 이때, 보관소에 저장된 객체를 구분하는 값으로 <id>에서 지정한 프로퍼티를 사용함.		   
+### * \<id\> 엘리먼트
+- \<id\>태그에서 지정한 프로퍼티는 객체의 식별자로 사용됨. select를 통해 생성된 결과 객체들은 별도의 보관소에 저장(캐싱, caching)해두고, 다음 select를 실행할 때 재사용. 이때, 보관소에 저장된 객체를 구분하는 값으로 \<id\>에서 지정한 프로퍼티를 사용함.		   
 		   
-### * <result> 엘리먼트  
-- <resultMap> 태그의 자식 태그로서 칼럼과 셋터 메서드의 연결을 정의함. column속성엔 칼럼이름, property속성엔 객체의 프로퍼티 이름을 지정.
+### * \<result\> 엘리먼트  
+- \<resultMap\> 태그의 자식 태그로서 칼럼과 셋터 메서드의 연결을 정의함. column속성엔 칼럼이름, property속성엔 객체의 프로퍼티 이름을 지정.
 - javaType 속성 : 칼럼의 값을 특정 자바 객체로 변환 가능 --> 속성을 지정하지 않는다면 셋터의 매개변수 타입에 맞춰 칼럼 값이 변환 됨. 		   
 		   
 ### * Mybatis의 Select 결과 캐싱
 - 성능 향상을 위해서, 한 번 생성된 객체는 버리지 않고 보관소에 두었다가, 다음 select를 실행할 때 재사용. 
-- select 결과에 대해 <resultMap>에 정의된 대로 자바 객체를 생성하고 싶다면, <select>의 resultMap 속성에 <resultMap> id를 지정한다. 
+- select 결과에 대해 \<resultMap\>에 정의된 대로 자바 객체를 생성하고 싶다면, \<select\>의 resultMap 속성에 \<resultMap\> id를 지정한다. 
+		   
 ``` html
 <select id="selectList" resultMap="projectResultMap"> ... </select>
 ```		   
@@ -491,11 +492,13 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 ### * SQL문의 입력 매개변수 처리
 - sql문을 작성할 때 외부에서 값을 주입할수 있도록 입력 매개변수를 지정해야하는 경우가 있다.
 - mybatis에서는 입력 매개변수를 '#{프로퍼티명}'으로 표시.
+		   
 ``` html
 <insert id="insert" parameterType="project">
 	insert into PROJECTS(PNAME, CONTENT, STA_DATE, END_DATE, STATE, CRE_DATE, TAGS) values (#{title}, #{content}, #{startDate}, #{endDate}, 0, now(), #{tags}</insert>
 ```
-- #{프로퍼티 명}이 가리키는 값은 <insert>의 parameterType에 지정한 객체의 프로퍼티 값(겟터 메서드의 반환값)임. 즉 #{title} 자리에는 Project객체의 getTitle() 반환값이 놓임. 
+		   
+- #{프로퍼티 명}이 가리키는 값은 \<insert\>의 parameterType에 지정한 객체의 프로퍼티 값(겟터 메서드의 반환값)임. 즉 #{title} 자리에는 Project객체의 getTitle() 반환값이 놓임. 
 - cf) 값 객체가 기본 타입일 경우 -> #{아무 이름 사용 가능} 		   
 - 입력 매개변수에 값 공급하기 : SqlSession 메서드를 호출할 때 값 객체를 전달. 		   
 ``` java
