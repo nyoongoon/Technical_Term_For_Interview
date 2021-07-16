@@ -445,7 +445,7 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 ```		   
 <br>		   
 
-### * SQL맵퍼
+## SQL맵퍼 파일
 - #{프로퍼티명} 자리에 객체의 프로퍼티 값이 놓인다. **객체의 프로퍼티란 겟터/셋터를 가리키는 용어** 프로퍼티 이름은 겟터/셋터 메서드의 이름에서 추출.
 		   
 		   Date getStartDate(){...}
@@ -509,6 +509,50 @@ int count = sqlSession.insert("dao.ProjectDao.insert", project);
 - project는 INSERT문을 실행할 때 입력 매개변수에 값을 공급할 객체.		   
 - sqlSession.insert()를 호출하면 SQL맵퍼 파일에서 dao.ProjectDao.insert 네임스페이스이름+아이디를 가진 sql문을 찾아 실행한다.		   
 
+## mybatis 설정 파일
+- mybatis에서는 자체 커넥션풀을 구축, 여러개의 데이터베이스 연결 정보 설정 후 원하는 DB 지정 사용, select결과 캐싱, 값 객체에 별명 부여.
+- ->이런 동작환경을 설정하기 위한 xml파일.
+### * \<configuration\> 루트 엘리먼트 		   
+- mybatis 설정 파일의 루트 엘리먼트는 configuration. 
+- configuration의 주요 자식 엘리먼트
+		   
+		properties   : 프로퍼티 파일이 있는 경로 설정. \<property\>를 사용하여 개별 프로퍼티 정의 가능
+		settings     : 프레임워크의 실행환경 설정.
+		typeAliases  : 자바 클래스 이름(패키지 이름 포함)에 대한 별명 설정
+		typeHandlers : 칼럼의 값을 자바 객체로, 자바 객체를 칼럼의 값으로 변환해 주는 클래스를 설정
+		environments : 프레임워크에서 사용한 데이터베이스 정보(트랜잭션 관리자, 데이터 소스)를 설정.
+		mappers      : SQL 맵퍼 파일들이 있는 경로 설정
+
+- \<properties\> 엘리먼트 
+: 데이터베이스 연결 정보처럼 자주 변경될 수 있는 값은 mybatis 설정 파일에 두지 않고, 보통 프로퍼티 파일에 저장. 프로퍼티 파일을 로딩하려면 <properties> 태그를 사용.
+: 프로퍼티 파일이 클래스 경로에 있다면 resource 속성을 사용하여 설정. 만약 클래스 경로가 아닌 다른 경로에 있다면 url 속성을 사용. 
+: 프로퍼티 파일에 정의된 것 외에 추가로 프로퍼티 정의 가능. \<property\> 태그를 사용하여 프로퍼티 이름과 값을 정의.		   
+: 프로퍼티 파일에 저장된 값은 ${프로퍼티 명} 형식으로 참조
+
+- \<typeAliases\> 엘리먼트 		   
+: SQL 맵퍼 파일에서 매개변수 타입이나 결과 타입을 지정할 때, 별명 사용 가능.
+
+``` html
+<typeAliases>
+	<typeAlias type = "vo.Project" alias="project"/>
+</typeAliases>	
+```		   
+		   
+- \<environments\> 엘리먼트
+: DB 환경정보를 설정할 때 사용하는 태그 -> 여러 개의 DB 접속 정보를 설정할 수 있다. 설정된 DB 정보 중에서 하나를 선택할 때는 default 속성을 사용.
+
+``` html
+\<environments default="development"\>
+		   \<environment id ="development"\>... \</environment\>		   
+```		   
+		   
+- \<environment\> 엘리먼트		   
+: 트랜잭션 관리 및 데이터 소스를 설정하는 태그
+: 트랜잭션이란 여러 개의 데이터 변경 작업을 하나의 작업으로 묶은 것. mybatis에선 JDBC, MANAGED 두 가지의 트랜잭션 관리 방식이 있다.		   
+: JDBC -> 직접 JDBC의 커밋, 롤백 기능을 사용하여 mybatis 자체에서 트랜잭션을 관리
+: MANAGED -> 서버의 트랜잭션 관리 기능을 이용. Java EE 애플리케이션 서버나 서블릿 컨테이너에서 트랜잭션을 		   
+		   
+		   
 ## POST Request(HTTP Request Method)
   -  <form>태그의 method 속성값이 post인 경우<br>
   
