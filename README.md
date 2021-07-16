@@ -563,7 +563,19 @@ int count = sqlSession.insert("dao.ProjectDao.insert", project);
 - \<mappers\> 엘리먼트
 : SQL맵퍼 파일들의 정보를 설정할 때 사용. 		   
 : resource 속성 -> 자바 클래스 경로 사용.
-: url 속성 -> 운영체제의 파일 시스템 경로 사용.		   
+: url 속성 -> 운영체제의 파일 시스템 경로 사용.		
+		   
+## mybatis 로그 출력 켜기<br/>
+: 로그 출력 기능을 켜면 mybatis에서 실행하는 sql문과 매개변수 값, 실행 결과를 실시간으로 확인할 수 있다.<br/>
+: 특히 동적 SQL문이 실행 조건에 따라 어떻게 달라지는지 확인할 수 있어 프로그램을 디버깅할 때 매우 유용하다.
+- mybatis 설정 파일에 로그 설정 추가
+
+``` html
+<settings>
+	<setting name="logImpl" value="LOG4J"/> //로그 출력기를 설정할 때 name 속성은 "logImpl" value 속성은 로그 출력기의 이름.
+</settings>	
+```		   
+		   
 		   
 ## POST Request(HTTP Request Method)
   -  <form>태그의 method 속성값이 post인 경우<br>
