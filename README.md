@@ -484,10 +484,27 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 - 성능 향상을 위해서, 한 번 생성된 객체는 버리지 않고 보관소에 두었다가, 다음 select를 실행할 때 재사용. 
 - select 결과에 대해 <resultMap>에 정의된 대로 자바 객체를 생성하고 싶다면, <select>의 resultMap 속성에 <resultMap> id를 지정한다. 
 ``` html
-<select id="selectList" resultMap="projectResultMap> ... </select>
+<select id="selectList" resultMap="projectResultMap"> ... </select>
 ```		   
-		   
-		   
+
+### * SQL문의 입력 매개변수 처리
+- sql문을 작성할 때 외부에서 값을 주입할수 있도록 입력 매개변수를 지정해야하는 경우가 있다.
+- mybatis에서는 입력 매개변수를 '#{프로퍼티명}'으로 표시.
+``` html
+<insert id="insert" parameterType="project">
+	insert into PROJECTS(PNAME, CONTENT, STA_DATE, END_DATE, STATE, CRE_DATE, TAGS) values (#{title}, #{content}, #{startDate}, #{endDate}, 0, now(), #{tags}</insert>
+```
+- #{프로퍼티 명}이 가리키는 값은 <insert>의 parameterType에 지정한 객체의 프로퍼티 값(겟터 메서드의 반환값)임. 즉 #{title} 자리에는 Project객체의 getTitle() 반환값이 놓임. 
+- cf) 값 객체가 기본 타입일 경우 -> #{아무 이름 사용 가능} 		   
+- 입력 매개변수에 값 공급하기 : SqlSession 메서드를 호출할 때 값 객체를 전달. 		   
+``` java
+int count = sqlSession.insert("dao.ProjectDao.insert", project);
+```		   
+- 'dao.ProjectDao' : SQL맵퍼 파일의 네임스페이스 이름
+- 'insert'는 SQL아이디
+- project는 INSERT문을 실행할 때 입력 매개변수에 값을 공급할 객체.		   
+- sqlSession.insert()를 호출하면 SQL맵퍼 파일에서 dao.ProjectDao.insert 네임스페이스이름+아이디를 가진 sql문을 찾아 실행한다.		   
+
 ## POST Request(HTTP Request Method)
   -  <form>태그의 method 속성값이 post인 경우<br>
   
