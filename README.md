@@ -456,14 +456,15 @@ SqlSession sqlSession = sqlSessionFactory.openSession();
 		   프로퍼티 이름 : startDate
 - 객체가 아닌 기본 데이터 형으로 전달할 때 -> 자동 포장(Auto-boxing)되어 전달됨. 
 - Integer클래스 같은 랩퍼(wrapper) 클래스에서는 프로퍼티를 의미하는 겟터 메서드가 없기 때문에, 기본 타입의 객체(랩퍼(wrapper) 객체)로부터 값을 꺼낼 때는 아무 이름이나 사용할 수 있음.		   
-### * <mappper> 루트 엘리먼트 
-- <mapper> 태그릐 namespace 속성은 자바의 패키지처럼 SQL문을 묶는 용도
-### * <select>, <insert>, <update>, <delete>엘리먼트
+### * \<mappper\> 루트 엘리먼트 
+- \<mapper\> 태그의 namespace 속성은 자바의 패키지처럼 SQL문을 묶는 용도
+### * \<select\>, \<insert\>, \<update\>, \<delete\>엘리먼트
 - id 속성 : 각각의 sql문을 구문하기 위해 id 속성을 사용
 - resultType 속성 : select문을 실행하면 결과가 생성되는데, 이 결과를 담을 객체를 지정하는 속성이 resultType. resultType에는 클래스 이름이 온다. mybatis 설정파일에 그 클래스 이름에 대한 별명이 정의되어 있다면 resultType값으로 별명 사용 가능
 - 칼럼과 셋터 메서드 : mybatis는 select결과가 저장된 resultType의 인스턴스를 생성후, 각 칼럼에 대응하는 셋터메서드를 찾아서 호출한다. 이때 셋서 메서드는 대소문자 구분없이 set을 뺸 메서드의 이름과 칼럼 이름이 같으면 된다. 칼럼의 이름과 일치하는 셋터가 없다면 값이 저장되지 않는다. 칼럼의 이름과 셋터가 일치하지 않는다면, select문을 작성할 때 칼럼에 별명을 붙이면 된다. 
 ### * <resultMap> 엘리먼트
-- 칼럼에 별명을 붙이는 대신 <resultMap>을 이용하면 칼럼 이름과 셋터 이름의 불일치 문제를 해결할 수 있음. <resultMap> 태그의 type값은 칼럼 데이터를 저장할 클래스 또는 클래스의 별명.		   
+- 칼럼에 별명을 붙이는 대신 <resultMap>을 이용하면 칼럼 이름과 셋터 이름의 불일치 문제를 해결할 수 있음. <resultMap> 태그의 type값은 칼럼 데이터를 저장할 클래스 또는 클래스의 별명.
+		   
 ``` html
 <resultMap type="project" id="projectResultMap">
 	<id column="pno" property="no"/> // <-- 칼럼이름과 셋터 메서드가 불일치할 경우 여기서 설정시켜줌!					      
