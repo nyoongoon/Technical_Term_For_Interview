@@ -550,8 +550,19 @@ int count = sqlSession.insert("dao.ProjectDao.insert", project);
 : 트랜잭션 관리 및 데이터 소스를 설정하는 태그
 : 트랜잭션이란 여러 개의 데이터 변경 작업을 하나의 작업으로 묶은 것. mybatis에선 JDBC, MANAGED 두 가지의 트랜잭션 관리 방식이 있다.		   
 : JDBC -> 직접 JDBC의 커밋, 롤백 기능을 사용하여 mybatis 자체에서 트랜잭션을 관리
-: MANAGED -> 서버의 트랜잭션 관리 기능을 이용. Java EE 애플리케이션 서버나 서블릿 컨테이너에서 트랜잭션을 		   
+: MANAGED -> 서버의 트랜잭션 관리 기능을 이용. Java EE 애플리케이션 서버나 서블릿 컨테이너에서 트랜잭션을 관리
 		   
+- 데이터 소스 설정
+: mybatis는 JDBC 표준 인터페이스인 javax.sql.DataSource 구현체를 이용하여 DB 커넥션을 다룸. 
+: mybatis에서 사용 가능한 데이터 소스 유형 세 가지
+		   
+		UNPOLLED : DB 커넥션을 요청할 떄마다 매번 커넥션 객체를 생성. 높은 성능 요구하지 않는 단순 앱에 적합
+		POOLED	 : 미리 DB커넥션 객체 생성해두고, 요청하면 즉시 반환. DB에 연결하는 과정, 즉 연결을 초기화하고 사용자를 인증하는 과정이 없기 때문에 속도가 빠르다.
+		JNDI     : Java EE 애플리케이션 서버나 서블릿 컨테이너에서 제공하는 데이터 소스를 사용
+- \<mappers\> 엘리먼트
+: SQL맵퍼 파일들의 정보를 설정할 때 사용. 		   
+: resource 속성 -> 자바 클래스 경로 사용.
+: url 속성 -> 운영체제의 파일 시스템 경로 사용.		   
 		   
 ## POST Request(HTTP Request Method)
   -  <form>태그의 method 속성값이 post인 경우<br>
