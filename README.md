@@ -565,7 +565,7 @@ int count = sqlSession.insert("dao.ProjectDao.insert", project);
 : resource 속성 -> 자바 클래스 경로 사용.
 : url 속성 -> 운영체제의 파일 시스템 경로 사용.		
 		   
-## mybatis 로그 출력 켜기<br/>
+## * mybatis 로그 출력 켜기<br/>
 : 로그 출력 기능을 켜면 mybatis에서 실행하는 sql문과 매개변수 값, 실행 결과를 실시간으로 확인할 수 있다.<br/>
 : 특히 동적 SQL문이 실행 조건에 따라 어떻게 달라지는지 확인할 수 있어 프로그램을 디버깅할 때 매우 유용하다.
 - mybatis 설정 파일에 로그 설정 추가
@@ -575,8 +575,51 @@ int count = sqlSession.insert("dao.ProjectDao.insert", project);
 	<setting name="logImpl" value="LOG4J"/> //로그 출력기를 설정할 때 name 속성은 "logImpl" value 속성은 로그 출력기의 이름.
 </settings>	
 ```		   
+
+### * Log4J 설정 파일 작성 <br/>
+: 로그의 수준, 출력 방식, 출력 형식, 로그 대상 등에 대한 정보가 들어감. 이 파일은 자바 클래스 경로에 두어야 함.
+- 로그의 출력 등급 설정<br/>
+ex) log4j.rootLogger=ERROR, stdout --> 루트 로거의 출력 등급 설정, 출력 담당자 선언.	
+: 루트 로거는 최상위 로거를 가리킴. 하위 로거들은 항상 부모의 출력 등급을 상속 받는다.
 		   
+		   로그 출력 등급
+		   FATAL       : 애플리케이션을 중지해야 할 심각한 오류
+		   ERROR       : 오류가 발생했지만, 애플리케이션은 계속 실행할 수 있는 상태
+		   WARN        : 잠재적인 위험을 안고 있는 상태
+		   INFO        : 애플리케이션의 주요 실행 정보
+		   DEBUG       : 애플리케이션의 내부 실행 상황을 추적해 볼 수 있는 상세 정보
+		   TRACE       : 디버그보다 더 상세한 정보 
 		   
+- 출력 담당자 선언
+: 루트 로거의 출력 등급을 설정하는 값 다음에 출력 담당자(Appender)의 이름이 온다. 위의 stdout
+- 출력 담당자의 유형을 결정
+: -> 로그를 어디로 출력할지 설정.
+
+``` 
+log4j.appender.이름=출력 담장자(패키지명 포함한 클래스명)		   
+```  
+- 출력 담당자를 지정하는 프로퍼티 이름은 항상 'log4j.appender'로 시작
+- 출력 담장자의 클래스
+		   
+		   org.apache.log4j.ConsoleAppender    : System.out 또는 System.err로 로그를 출력시킨다. 기본은 System.out(모니터)
+		   org.apache.log4j.FileAppender       : 파일로 로그를 출력
+		   org.apache.log4j.net.SocketAppender : 원격의 로그 서버에 로그 정보를 담은 LoggingEvent 객체를 보낸다.
+
+-로그의 출력 형식 정의
+
+``` 
+log4j.appender.이름.layout=출력형식 클래스(패키지명을 포함한 클래스명)
+``` 
+- 출력 형식 클래스
+		   
+		   org.apache.log4j.SimpleLayout  : 출력 형식은 '출력 등록 - 메시지'
+		   org.apache.log4j.HTMLLayout    : HTML 테이블 형식으로 출력
+		   org.apache.log4j.PatternLayout : 변환 패턴의 형식에 따라 출력 ex) %-5p[%t]:%m%n
+		   org.apache.log4j.xml.XMLLayout : log4j.dtd 규칙에 따라 XML을 만들어 출력
+		   
+- 특정 패키지의 클래스에 대해 로그의 출력 등급 설정
+: log4j.logeer.패키지이름=출력등급		   
+
 ## POST Request(HTTP Request Method)
   -  <form>태그의 method 속성값이 post인 경우<br>
   
