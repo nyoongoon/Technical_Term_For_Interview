@@ -294,7 +294,30 @@ void setAttribute(String name, Object o){
 : 메시지를 작성하는 중이더라도 상대편으로부터 메시지를 받게 되면 즉시 메시지를 출력한다. -> 외부에서 발생한 이벤트에 의해 코드의 흐름이 바뀐 것.
 - ex) 역제어의 사례 - 2. 의존성 주입 
 
+```java
+//예전 방식
+class ProjectListController{
+    public void execute(){
+	 ProjectDao dao = new ProjectDao(); //의존 객체 직접 생성
+	 ArrayList<Project> projects = dao.list();
+...	 
+```
+	 
+- 예전 방식은 자신이 사용할 객체(의존객체-Dependencies)를 자신이 직접 만들어서 씀
 
+``` java	 
+//의존성 주입
+class ProjectListController{
+    ProjectDao dao;
+    
+    public void setProjectDao(ProjectDao dao){
+	 this.dao = dao;
+    }
+	 
+    public void execute(){
+	 ArrayList<Project> projects = dao.list();
+```
+- 의존성 주입을 이용한 방식은 외부에서 사용할 객체(의존 객체)를 주입 받는다. 위의 코드에서 셋터 메서드를 통해 외부에서 ProjectDAo객체를 주입받고 있다. 
 	 
 ## JDBC(Java Database Connectivity)
   - 자바에서 데이터베이스에 접속할 수 있게 도와주는 자바 API. == 데이터베이스에 접속할 수 있게 해주는 인터페이스.
