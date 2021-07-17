@@ -279,17 +279,23 @@ void setAttribute(String name, Object o){
  // 주로 forward()나 include()안에 담긴 객체를 공유하기 할 때, setAttibute를 사용하여 공유할 객체에 값을 보관할 수 있다.
  } 
  // 세션 내장객체를 가져올 수 있다
- HttpSession session = request.getSession();
- 
- 
- 
+ HttpSession session = request.getSession(); 
 ```
  
 ## HttpServletResponse
    - 주요 메소드 
            
            setContentType("text/html;charset=UTF-8"), getWriter() ...
-  
+	 
+## IoC 컨테이너
+- 역제어(Inversino of Control) : 개발자가 작성한 코드의 흐름에 따라 제어가 이루어지는 것이 아니라, 외부에 의해 코드의 흐름이 바뀌는 것.
+- -> DI(의존성 주입)는 IoC의 한 형태. 
+- ex) 역제어의 사례 - 1. 이벤트
+: 메시지를 작성하는 중이더라도 상대편으로부터 메시지를 받게 되면 즉시 메시지를 출력한다. -> 외부에서 발생한 이벤트에 의해 코드의 흐름이 바뀐 것.
+- ex) 역제어의 사례 - 2. 의존성 주입 
+
+
+	 
 ## JDBC(Java Database Connectivity)
   - 자바에서 데이터베이스에 접속할 수 있게 도와주는 자바 API. == 데이터베이스에 접속할 수 있게 해주는 인터페이스.
   - 이 인터페이스를 통해서 자바 어플리케이션과 DBMS의 통신을 가능하게 해준다. 
