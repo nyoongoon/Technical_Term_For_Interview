@@ -310,14 +310,14 @@ class ProjectListController{
 class ProjectListController{
     ProjectDao dao;
     
-    public void setProjectDao(ProjectDao dao){
+    public void setProjectDao(ProjectDao dao){ //외부에서 ProjectDao를 매개변수로 받아서 
 	 this.dao = dao;
     }
 	 
     public void execute(){
 	 ArrayList<Project> projects = dao.list();
 ```
-- 의존성 주입을 이용한 방식은 외부에서 사용할 객체(의존 객체)를 주입 받는다. 위의 코드에서 셋터 메서드를 통해 외부에서 ProjectDAo객체를 주입받고 있다. 
+- 의존성 주입을 이용한 방식은 외부에서 사용할 객체(의존 객체)를 주입 받는다. 위의 코드에서 셋터 메서드를 통해 외부에서 ProjectDao객체를 주입받고 있다. 
 	 
 ## JDBC(Java Database Connectivity)
   - 자바에서 데이터베이스에 접속할 수 있게 도와주는 자바 API. == 데이터베이스에 접속할 수 있게 해주는 인터페이스.
