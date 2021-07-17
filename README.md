@@ -620,6 +620,61 @@ log4j.appender.이름.layout=출력형식 클래스(패키지명을 포함한 �
 - 특정 패키지의 클래스에 대해 로그의 출력 등급 설정
 : log4j.logeer.패키지이름=출력등급		   
 
+## * 동적 SQL
+- mybaits에서 제공하는 동적SQL 기능을 사용하면 하나의 SQL문으로 여러 상황에 대처할 수 있다. 
+### * 동적 SQL 엘리먼트
+
+		   - \<if test="조건"\> SQL 문 \</if\>
+		   : \<if\>태그는 어떤 값의 상태를 검사하여 참일 경우에만 SQL문을 포함하고 싶을 때 사용한다. 
+		     test속성에 지정된 조건이 참이면 \<if\> 태그의 내용을 반환한다. 
+		    
+		   
+		   - \<choose\>
+		    	\<when test="조건1">SQL 문\</when\>
+		   	\<when test="조건2">SQL 문\</when\>
+		   	\<otherwise\> SQL문 \</otherwise\>
+		    \</choose\>
+		   : \<choose\> 태그는 검사할 조건이 여러 개 일 경우에 사용. 
+		     test 속성에 지정된 조건이 참이면 \<when\> 태그의 내용을 반환. 
+		     일치하는 조건이 없으면 \<otherwise\>의 내용을 반환.
+		  
+		   - \<where\>
+		   	\<if test="조건"\> SQL문 <\when\>
+		    \</where\>
+		    : \<where\> 태그는 WHERE절을 반환. 
+		      \<where\>안의 하위 태그를 실행하고 나서 반환값이 있으면 WHERE절을 만들어 반환한다.
+		  
+		   - \<trim prefix="단어" prefixOverride="문자열|문자열"\>
+			\<if test="조건"\> SQL문 <\when\>
+		     \</trim\>
+		     : \<trim\> 태그는 특정 단어로 시작하는 SQL문을 반환하고 싶을 때 사용. 
+		     prefix는 반환값 앞에 붙일 접두어를 지정. prefixOverrides는 반환할 값에서 제거해야하는 접두어 지정.
+		  
+		   - \<set\>
+		   	\<if test="조건"\> SQL문 <\when\>
+		     \</set\>
+		     : \<set\> 태그는 UPDATE 문의 SET절을 만들 때 사용. 
+		       \<set\> 절의 항목이 여러개 일 경우 자동으로 콤마를 붙임.
+		   
+		   - \<foreach 
+			    item="항목"
+			    index="인덱스"
+			    collection="목록"
+			    open="시작문자열"
+			    close="종료문자열"
+			    separator="구분자"\>  
+		    \</foreach\>
+		    : \<foreach\> 태그는 목록의 값을 가지고 SQL문을 만들 떄 사용. 특히 IN(값,값,...)조건을 만들 때 좋다.
+		      item 속성에는 항목을 가리킬 때 사용할 변수의 이름을 지정.
+		      index 속성에는 항목의 인덱스 값을 꺼낼 때 사용할 변수 이름을 지정
+		      collection 속성에는 java.util.List 구현체나 배열 객체가 옴
+		      open 속성에는 최종 반환값의 접두어를 지정.
+		      close 속성에는 최종 반환값의 접미어를 지정
+		      separator 속성은 반복으로 생성하는 값을 구분하기 위해 붙이는 문자열을 지정.
+		   
+		  - \<bind name="변수명" value="값"/>
+  		    : \<bind\>태그는 변수를 생성할 때 사용한다. 			  
+		   
 ## POST Request(HTTP Request Method)
   -  <form>태그의 method 속성값이 post인 경우<br>
   
