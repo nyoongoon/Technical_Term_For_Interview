@@ -310,7 +310,7 @@ class ProjectListController{
 class ProjectListController{
     ProjectDao dao;
     
-    public void setProjectDao(ProjectDao dao){ //외부에서 ProjectDao를 매개변수로 받아서 
+    public void setProjectDao(ProjectDao dao){ //외부에서 ProjectDao를 매개변수로 받아서 사용
 	 this.dao = dao;
     }
 	 
