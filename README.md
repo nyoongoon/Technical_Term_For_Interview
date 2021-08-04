@@ -382,7 +382,59 @@ class ProjectListController{
           java:comp/env/mail          : JavaMail 연결 객체
           java:comp/env/url           : URL 정보
           java:comp/env/jms           : JMS 연결 
-  
+
+ 
+## jQuery
+	 
+1. 엘리먼트를 선택하는 강력한 방법
+2. 선택된 엘리먼트들을 효율적으로 제어
+3. 자바스크립트 라이브러리
+
+### Hello World
+1. \<script\>태크에 jQuery url 넣기
+
+``` jsp
+<html>
+	<body>
+		<div class = "welcome"></div>
+		<div class = "welcome"></div>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript">
+			$('.welcome').html('hello world').css('background-color', 'yellow');
+		</script>
+	</body>
+</html>
+```
+- jQuery 문법 
+: $(제어대상).method1().method2();
+    주어(->css 셀렉터 문법) //  서술어
+cf)css 셀렉터 문법 -> 제어 대상에 명시된 클래스명을 가진 모든 엘리먼트들을 찾음
+- jquery가 제공하는 모든 메소드들은 메소드가 리턴될 때, 제어했던 대상을 리턴. (꼬리에 꼬리를 물은 코딩 방식 가능-> 체인)
+
+cf)  
+	
+	jquery를 이용해 form값을 Controller로 넘겨주도록 프로그래밍하였다. form은 실제론 보이지 않게 하기 위하여 type="hidden"으로 하고 class 이름을 정한다. 
+	이 때 class가 아니더라도, id, name을 이용할 수 있다. jquery는 이 form에 값을 넣어주는 부분  $('.class이름').val(데이터); 형식으로 정해준다.
+
+cf) 
+		
+	.val()
+	.val()은 양식(form)의 값을 가져오거나 값을 설정하는 메소드입니다.
+	
+	문법 1
+	.val()
+	선택한 양식의 값을 가져옵니다. 예를 들어
+	var jb = $( 'input#jbInput' ).val();
+	은 아이디가 jbInput인 input 요소의 값을 변수 jb에 저장합니다.
+
+	문법 2
+	.val( value )
+	선택한 양식의 값을 설정합니다. 예를 들어
+	$( 'input#jbInput' ).val( 'ABCDE' );
+	는 아이디가 jbInput인 input 요소의 값을 ABCDE로 정합니다.
+
+	 
+	 
 ## JSP(JavaServerPage)                                                          
  - 화면 생성을 쉽게 해주는 기술. 뷰 컴포넌트를 만들 때 사용한다. <br>
  
