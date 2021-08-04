@@ -55,6 +55,45 @@
 
 ### (회원가입시) Ajax를 사용하는 이유 2.
 2. 비동기 통신을 하기 위해 
+
+
+``` javascript
+//ajax호출시 default가 비동기 호출 
+$.ajax({
+	type:"POST", //방식
+	url:"/api/user/join", //어느주소?
+	//JSON<-자바스크립트오브젝튼
+	data: JSON.stringify(data), //http body데이터
+	contentType:"application/json; charset=utf-8", //body데이터가 어떤 타입인지(MIME)
+	dataType:"json"//응답이 왔을 때 (기본적으로 모드것은 문자열로 옴(버퍼라서))-> 생긴게 JSON이라면 자바스크립트 오브젝트로 바꿔줌.
+	
+}).done(function(res){
+	alert("회원가입이 완료되었습니다.");
+}).fail(function(err){
+	alert(JSON.stringify(err));
+}); //ajax통신을 이용해서 3개의 데이터를 json으로 변경하여 insert 요청
+```
+
+- cf) 자바스크립트 오브젝트 vs JSON
+```jsp
+<script>
+	let data = {
+		username : "ssar",
+		password : "1234",
+		email : "ssar@nate.com"
+	};
+console.log(data); // 자바스크립트 오브젝트
+console.log(JSON.stringigy(data)); //JSON 문자열
+</script>
+```
+### (생활코딩 - jQuery Ajax)
+- jQuery.ajax([settings])
+- settings엔 Ajax 통신을 위한 옵션을 담고 있는 객체가 들어간다. 주요한 옵션을 열거 해보면 다음과 같다.
+- data : 서버로 데이터를 전송할 때 이 옵션을 사용
+- dateType : 서버측에서 전송한 데이터를 어떤 형식의 데이터로 해석 할 것인가를 지정. 값으로 올 수 있는 것은 xml, json, script, html. 형식을 지정하지 않으면 jQuery가 알아서 판단
+- success 성공했을 때 호출할 콜백을 지정 
+- type 데이터를 전송하는 방법을 지정. get/post
+
 <br/><br/>
 ## Buffer
 
