@@ -136,6 +136,19 @@ cf) 변수에 접근할 때, 객체를 초기화할 때, 객체에 접근할 때
 
 <br/><br/>
 
+## API (Application Programming Interface)
+
+- 응용 프로그램에서 운영 체제나 프로그래밍 언어가 **제공하는 기능을 제어**할 수 있게 만든 인터페이스
+
+### API의 특징
+- 구현과는 독립적으로 사양만 정의되어 있다.
+- API에 따라 접근 권한이 필요할 수 있다.
+ex) Java API, Open source API
+
+### API vs Libaray 
+- 라이브러리는 API들을 종류나 목적에 따라 나누어 정의한 API 묶음.
+<br/><br/>
+
 ## Buffer
 
 - Java에서 버퍼를 비워줘야 하는 경우
