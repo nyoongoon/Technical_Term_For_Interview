@@ -5,18 +5,6 @@
 
 <br>
 
-## Annotation(애노테이션)
-- 컴파일이나 배포, 실행할 때 참조할 수 있는 주석. 애노테이션을 사용하여 클래스나, 필드, 메서드에 대해 부가 정보를 등록할 수 있다. 
-
-- 애노테이션 유지 정책
-```java
-@Retention(RetentionPolicy.RUNTIME) // RetentionPolicy.SOURCE : 소스 파일에서만 유지. 컴파일할 때 제거됨. 클래스 파일에 애노테이션 정보 남아있지 않음.
-			            // RetentionPolicy.CLASS : 클래스 파일에 기록됨. 실행 시에는 유지되지 않음. 실행 중에는 애노테이션 값을 꺼낼 수 없음(기본정책)
-	 		            // RetentionPolicy.RUNTIME : 클래스 파일에 기록됨. 실행 시에도 유지됨. 즉, 실행 중에 클래스에 기록된 애노테이션 값 참조 가능
-```
-
-- 주의할 점 : DataSource와 같은 톰캣 서버가 제공하는 객체에는 애노테이션을 적용할 수 없다.
-
 ## Ajax
 ### (회원가입시) Ajax를 사용하는 이유 1.
  1. 요청에 대한 응답을 html이 아닌 Data(Json)를 받기 위해서
@@ -95,6 +83,59 @@ console.log(JSON.stringigy(data)); //JSON 문자열
 - type 데이터를 전송하는 방법을 지정. get/post
 
 <br/><br/>
+
+## Annotation(애노테이션)
+- 컴파일이나 배포, 실행할 때 참조할 수 있는 주석. 애노테이션을 사용하여 클래스나, 필드, 메서드에 대해 부가 정보를 등록할 수 있다. 
+
+- 애노테이션 유지 정책
+```java
+@Retention(RetentionPolicy.RUNTIME) // RetentionPolicy.SOURCE : 소스 파일에서만 유지. 컴파일할 때 제거됨. 클래스 파일에 애노테이션 정보 남아있지 않음.
+			            // RetentionPolicy.CLASS : 클래스 파일에 기록됨. 실행 시에는 유지되지 않음. 실행 중에는 애노테이션 값을 꺼낼 수 없음(기본정책)
+	 		            // RetentionPolicy.RUNTIME : 클래스 파일에 기록됨. 실행 시에도 유지됨. 즉, 실행 중에 클래스에 기록된 애노테이션 값 참조 가능
+```
+
+- 주의할 점 : DataSource와 같은 톰캣 서버가 제공하는 객체에는 애노테이션을 적용할 수 없다.
+<br/><br/>
+
+## AOP(관점지향 프로그래밍)
+- 하나의 프로그램 방법론
+- AOP란?
+: Aspect Oriented Programming
+: 개발, 운영할 때 활용하는 코드가 필요한 경우가 있다. (개발/운영 관점)
+: Primary(Core) Concern(주업무)과 Cross-cutting Concern(부업무) 
+-> 로그처리, 보안처리, 트랜잭션처리 
+ 
+=> 여러 오브젝트에 나타나는 공통적인 부가 기능을 모듈화하여 재사용하는 기법.
+
+-> 어떤 부가기능을? 언제? -> Advice
+-> 어디에? -> Joinpoint, Pointcut
+
+### Advice 종류
+- 어떤 부가기능을 언제 사용할지에 대한 정의
+- 메서드가 실행되기 전 -> @Before
+- 메서드 정상실행 -> @AfterReturning
+- 메서드 예외 -> @AfterThrowing
+- 메서드 정상실행||예외 -> @After
+- 메서드 실행 전후 -> @Around
+
+### JoinPoint
+- 어드바이스가 적용될 수 있는 위치를 나타냄
+- 메서드 호출할 때 -> 스프링 aop는 이때만 어드바이스 적용
+cf) 변수에 접근할 때, 객체를 초기화할 때, 객체에 접근할 때 -> 스프링X
+
+### Pointcut
+- Advicd를 적용할 Joinpoint를 선별하는 작업
+
+### Target
+: 부가 기능이 적용될 대상
+
+### AOP는 어디에 사용될까?
+- 성능 검사
+- 트랜잭션 처리
+- 로깅 
+
+<br/><br/>
+
 ## Buffer
 
 - Java에서 버퍼를 비워줘야 하는 경우
