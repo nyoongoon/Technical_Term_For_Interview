@@ -155,9 +155,9 @@ ex) Java API, Open source API
 
 - IoC -> 미리 컨테이너에 띄워 놓기
 - 두 가지 ApplicatinoContext
-- 1. root-applicationContext.xml  (ContextLoaderListener가 실행)
+1. root-applicationContext.xml  (ContextLoaderListener가 실행)
 : 어노테이션 Service, Repository 등을 스캔(메모리에 로딩)하고 DB관련 객체를 생성
-- 2. servlet-applicationContext.xml (DispatcherServlet이 실행) 
+2. servlet-applicationContext.xml (DispatcherServlet이 실행) 
 : ViewResolver, Interceptor, MultipartResolver 객체를 생성, 웹과 관련된 어노테이션 Controller, RestController 를 스캔
 
 <br/><br/>
