@@ -147,6 +147,7 @@ ex) Java API, Open source API
 
 ### API vs Libaray 
 - 라이브러리는 API들을 종류나 목적에 따라 나누어 정의한 API 묶음.
+
 <br/><br/>
 
 ## Buffer
