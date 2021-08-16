@@ -1088,4 +1088,19 @@ Set<Class<?>> reflector.getTypeAnnotatedWith(Component.class); // 애노테이�
 
 
 - 싱글턴이 객체지향에 더 적합 
- 
+
+<br/><br/>
+
+## web.xml
+- 관문의 개념
+- (문지기가) 하는 일
+		
+		1. ServletContext의 초기 파라미터
+		2. Session의 유효시간 설정
+		3. Servlet/JSP에 대한 정의
+		4. Servlet/JSP 매핑
+		5. Mime Type 매핑 (데이터의 타입)
+		6. Welcome File list
+		7. Error Pages 처리
+		8. 리스너/필터 설정  
+		9. 보안
