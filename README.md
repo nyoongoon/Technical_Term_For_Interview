@@ -1005,7 +1005,7 @@ Set<Class<?>> reflector.getTypeAnnotatedWith(Component.class); // 애노테이�
 - DAO처럼 여러 서블릿이 사용하는 객체는 공유하는 것이 좋다. -> ServletContextListener  구현 하기
 <br/><br/>
 
-## 싱글턴 디자인 패턴
+## Singleton 싱글턴 디자인 패턴
 
 ### 싱글턴이란?
 : 클래스의 인스턴스를 하나만 생성하고, 어디서든 그 인스턴스를 탐조할 수 있도록 하는 패턴(전역접근 제공)
