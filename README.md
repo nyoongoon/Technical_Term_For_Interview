@@ -429,8 +429,34 @@ public interface Controller {
 	 //map에 저장된 값은 프론트 컨트롤러가 꺼내서 ServletRequest 보관소에 저장시키고, JSP가 꺼내서 사용한다. 	
 }
 ``` 
+ <br/><br/>
+	
+## FrontController / RequestDispatcher / DispatcherServlet
+
+------>  WebServer   -->
+request  (요청이 URL, 혹은 자바파일 )
+
+-> 톰캣 -> web.xml 
+	   |
+	   "~.do"(특정주소) 로 오면 frontcontroller가 낚아채기
+
+-----> 
+request
+
+- 최초 앞단에서 request요청을 받음
+- frontcontroller가 낚아채는 등의 새로운 req, res새롭게 new 될 수 있음
+
+	-> 그래서 기존의 req, res를 유지하기 위해 아래의 RequestDispatcher가 필요
+
+### RequestDispatcher(JSP)
+- 필요한 클래스 요청이 도달했을 때 FrontController에 도착한 req, res를 그대로 유지시켜준다.
+
+### DispatcherServlet 
+- 스프링에서 DispatcherServlet은 FrontController + RequestDispatcher 이다.
+- DispatcherServlet이 자동 생성 되어질 때 수 많은 객체가 생성(IoC)된다. 보통 필터들인데 개발자가 직접 등록할 수 도 있고 기본적으로 필요한 필터들은 자동 등록되어진다.	
  
- 
+<br/><br/>	
+	
 ## GET Request(HTTP Request Method)
   1. 웹 브라우저 주소창에 URL을 입력하는 경우
   2. 링크를 클릭하는 경우
